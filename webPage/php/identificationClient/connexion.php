@@ -24,7 +24,7 @@ function tentativeConnexion()
 
     require_once("./../identificationBD.php");
 
-    $sql = "SELECT  pseudo,	mail, argent, mdp FROM client WHERE mail='$mail' AND mdp='$mdp'";
+    $sql = "SELECT  mail, mdp FROM client WHERE mail='$mail' AND mdp='$mdp'";
 
     $results = $bd->query($sql);
     // echo "results est vide ?".$results;
@@ -70,7 +70,13 @@ echo "<!--connecte = " . $connecte . "-->";
     </header>
 
     <main>
-        <form action="./connexion.php" method="POST">
+        <form action="<?php
+                        if (!$connecte) {
+                            echo "./connexion.php";
+                        } else {
+                            echo "./compte.php";
+                        }
+                        ?>" method="POST" id="connexion">
             <div class="container">
 
                 <h2>Connexion</h2>
@@ -123,10 +129,8 @@ echo "<!--connecte = " . $connecte . "-->";
                     </div>
 
                     <?php
-                    if ($cUneTentativeDeConnexion && $connecte) {
-                        header('Location: ./compte.php');
-                        // sinon quitte
-                        exit();
+                    if ($connecte) {
+                        echo "<script type=\"text/javascript\">window.onload=function(){document.forms['connexion'].submit();}</script>";
                     }
                     ?>
 

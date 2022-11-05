@@ -1,38 +1,16 @@
 <?php
-// if (!empty($_POST)) { /*Y a t-il au moins une valeur transmise par un formulaire */
+print_r($_POST);
+$mail = $_POST["mail"];
+$mdp = $_POST["mdp"];
 
-//     if (!is_null($_POST["mail"])) { /* mail est nul ?*/
+// require_once("./../identificationBD.php");
 
-//         $mail = $_POST["mail"];
+// $sql = "SELECT pseudo, argent FROM client WHERE mail='$mail' AND mdp='$mdp'";
 
-//         if (!is_null($_POST["mdp"])) { /* mdp est nul ?*/
+// $results = $bd->query($sql);
 
-//             $mdp = $_POST["mdp"];
-
-//             // require_once("./../identificationBD.php");
-
-//             // $sql = "SELECT idCl, pseudo, argent FROM client WHERE mail='$mail' AND mdp='$mdp'";
-
-//             // $results = $bd->query($sql);
-//             // $infoCompte = $results->fetchAll(PDO::FETCH_OBJ);
-//             // unset($bd);
-
-//             $tentativeDeConnexion = true;
-
-//             if (isset($infoCompte)) {
-//                 $connecte = true;
-//             } else {
-//                 $connecte = false;
-//             }
-//         } else {
-//             $tentativeDeConnexion = false;
-//         }
-//     } else {
-//         $tentativeDeConnexion = false;
-//     }
-// } else {
-//     $tentativeDeConnexion = false;
-// }
+// $infoCompte = $results->fetchAll(PDO::FETCH_OBJ);
+// unset($bd);
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +28,7 @@
     <header>
         <h3>GALAXY STORE</h3>
         <ul class="button">
-        <h5><a href="./../../index.php">A propos de nous</a></h5>
+            <h5><a href="./../../index.php">A propos de nous</a></h5>
             <h5><a href="./../boutique/boutique.php">Boutique</a></h5>
             <h5 id="butSelected"><a href="./compte.php">Mon compte</a></h5>
         </ul>
