@@ -88,4 +88,5 @@ h5.error {
     text-transform: none;
     color: #f38688;
     font-style: italic;
+    font-size: 99%; /*pour éviter un retour à la ligne*/
 }

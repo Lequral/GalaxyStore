@@ -1,25 +1,26 @@
 <?php
+
 function tentativeConnexion()
 {
     if (empty($_POST)) { /*Y a t-il aucune valeur transmise par un formulaire */
-        return [FALSE, FALSE];
+        return [FALSE, FALSE, NULL];
     }
 
-    echo "<!-- essai de co -->";
+    // echo "<!-- essai de co -->";
 
     if (is_null($_POST["mail"])) { /* mail est nul ?*/
-        return [FALSE, FALSE];
+        return [FALSE, FALSE, NULL];
     }
 
     $mail = $_POST["mail"];
-    echo "<!-- " . "<br>mail est déf = " . $mail . "-->";
+    // echo "<!-- " . "<br>mail est déf = " . $mail . "-->";
 
     if (is_null($_POST["mdp"])) { /* mdp est nul ?*/
-        return [FALSE, FALSE];
+        return [FALSE, FALSE, NULL];
     }
 
     $mdp = $_POST["mdp"];
-    echo "<!-- " . "<br>mdp est déf = " . $mdp . "-->";
+    // echo "<!-- " . "<br>mdp est déf = " . $mdp . "-->";
 
     require_once("./../identificationBD.php");
 
@@ -31,14 +32,20 @@ function tentativeConnexion()
     unset($bd);
 
     if (empty($infoCompte)) {
-        return [TRUE, FALSE];
+        return [TRUE, FALSE, NULL];
     } else {
-        return [TRUE, TRUE];
+        return [TRUE, TRUE, $infoCompte];
     }
 }
-$valeurs = tentativeConnexion();
-$cUneTentativeDeConnexion = $valeurs[0];
-$connecte = $valeurs[1];    
+$resultats = tentativeConnexion();
+$cUneTentativeDeConnexion = $resultats[0];
+$connecte = $resultats[1];
+if (isset($resultats[2])) {
+    $infoCompte = get_object_vars($resultats[2][0]);/* get_object_vars($mdp) permet de transformer un object STD:Class en array/list */
+}
+
+echo "<!--tentativeDeConnexion = " . $cUneTentativeDeConnexion . "-->";
+echo "<!--connecte = " . $connecte . "-->";
 ?>
 
 <!DOCTYPE html>
@@ -66,44 +73,45 @@ $connecte = $valeurs[1];
         <form action="./connexion.php" method="POST">
             <div class="container">
 
-                <h2>Connexion
-                    <?php
-                    echo "tentativeDeConnexion = " . $cUneTentativeDeConnexion . "<br>";
-                    echo "connecte = " . $connecte;
-                    ?>
-                </h2>
+                <h2>Connexion</h2>
 
                 <div id="interactif">
 
                     <div>
                         <label for="mail">
                             <?php
-                            if ($cUneTentativeDeConnexion && !$connecte) { /*a essayé de se co mais c'est un échec*/
-                                echo "<h5 class='error'>Mail <span>- Mail ou mot de passe invalide</span></h5>";
-                            } else {
+                            if (!$cUneTentativeDeConnexion) { /* a pas essayé de se co*/
                                 echo "<h5>Mail</h5>";
-                                // header('Location: ./compte.php');
-                                // sinon quitte
-                                // exit();
+                            } elseif ($cUneTentativeDeConnexion && !$connecte) { /*a essayé de se co mais c'est un échec*/
+                                echo "<h5 class='error'>Mail <span>- Mail invalide/inconnu</span></h5>";
+                            } else {
+                                echo "<h5>Redirection...</h5>";
                             }
                             ?>
                         </label><br>
-                        <input type="text" name="mail" id="mail" required>
+                        <input type="text" name="mail" id="mail" required <?php
+                                                                            if ($cUneTentativeDeConnexion && $connecte) {
+                                                                                echo 'value="' . $infoCompte["mail"] . '"';
+                                                                            }
+                                                                            ?>>
                     </div>
                     <div>
                         <label for="mdp">
                             <?php
-                            if ($cUneTentativeDeConnexion && !$connecte) {
-                                echo "<h5 class='error'>Mot de passe <span>- Mail ou mot de passe invalide</span></h5>";
-                            } else {
+                            if (!$cUneTentativeDeConnexion) {
                                 echo "<h5>Mot de passe</h5>";
-                                // header('Location: ./compte.php');
-                                // sinon quitte
-                                // exit();
+                            } elseif ($cUneTentativeDeConnexion && !$connecte) {
+                                echo "<h5 class='error'>Mot de passe <span>- Mot de passe invalide/inconnu</span></h5>";
+                            } else {
+                                echo "<h5>Redirection...</h5>";
                             }
                             ?>
                         </label><br>
-                        <input type="password" name="mdp" id="mdp" required>
+                        <input type="password" name="mdp" id="mdp" required <?php
+                                                                            if ($cUneTentativeDeConnexion && $connecte) {
+                                                                                echo 'value="' . $infoCompte["mdp"] . '"';
+                                                                            }
+                                                                            ?>>
                     </div>
 
                     <button type="submit">
@@ -113,6 +121,14 @@ $connecte = $valeurs[1];
                     <div class="small_text">
                         <p>Vous n'avez pas de compte <a href="./inscription.php" class="small_link">S'inscrire</a></p>
                     </div>
+
+                    <?php
+                    if ($cUneTentativeDeConnexion && $connecte) {
+                        header('Location: ./compte.php');
+                        // sinon quitte
+                        exit();
+                    }
+                    ?>
 
                 </div>
         </form>
