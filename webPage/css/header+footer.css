@@ -55,6 +55,7 @@ ul>h5:nth-child(2) {
 }
 ul>h5:nth-child(3) { /*on prend le 3e h5 et on l'étend sur 1 colonnes*/
     grid-column: span 1;
+    width: max-content;
 }
 
 a {

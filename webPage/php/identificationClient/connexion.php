@@ -1,39 +1,44 @@
 <?php
-if (!empty($_POST)) { /*Y a t-il au moins une valeur transmise par un formulaire */
-
-    if (!is_null($_POST["mail"])) { /* mail est nul ?*/
-
-        $mail = $_POST["mail"];
-
-        if (!is_null($_POST["mdp"])) { /* mdp est nul ?*/
-
-            $mdp = $_POST["mdp"];
-
-
-            require_once("./../identificationBD.php");
-
-            $sql = "SELECT idCl, pseudo, argent FROM client WHERE mail='$mail' AND mdp='$mdp'";
-
-            $results = $bd->query($sql);
-            $infoCompte = $results->fetchAll(PDO::FETCH_OBJ);
-            unset($bd);
-
-            $tentativeDeConnexion = true;
-
-            if (isset($infoCompte)) {
-                $connecte = true;
-            } else {
-                $connecte = false;
-            }
-        } else {
-            $tentativeDeConnexion = false;
-        }
-    } else {
-        $tentativeDeConnexion = false;
+function tentativeConnexion()
+{
+    if (empty($_POST)) { /*Y a t-il aucune valeur transmise par un formulaire */
+        return [FALSE, FALSE];
     }
-} else {
-    $tentativeDeConnexion = false;
+
+    echo "<!-- essai de co -->";
+
+    if (is_null($_POST["mail"])) { /* mail est nul ?*/
+        return [FALSE, FALSE];
+    }
+
+    $mail = $_POST["mail"];
+    echo "<!-- " . "<br>mail est déf = " . $mail . "-->";
+
+    if (is_null($_POST["mdp"])) { /* mdp est nul ?*/
+        return [FALSE, FALSE];
+    }
+
+    $mdp = $_POST["mdp"];
+    echo "<!-- " . "<br>mdp est déf = " . $mdp . "-->";
+
+    require_once("./../identificationBD.php");
+
+    $sql = "SELECT  pseudo,	mail, argent, mdp FROM client WHERE mail='$mail' AND mdp='$mdp'";
+
+    $results = $bd->query($sql);
+    // echo "results est vide ?".$results;
+    $infoCompte = $results->fetchAll(PDO::FETCH_OBJ);
+    unset($bd);
+
+    if (empty($infoCompte)) {
+        return [TRUE, FALSE];
+    } else {
+        return [TRUE, TRUE];
+    }
 }
+$valeurs = tentativeConnexion();
+$cUneTentativeDeConnexion = $valeurs[0];
+$connecte = $valeurs[1];    
 ?>
 
 <!DOCTYPE html>
@@ -61,20 +66,25 @@ if (!empty($_POST)) { /*Y a t-il au moins une valeur transmise par un formulaire
         <form action="./connexion.php" method="POST">
             <div class="container">
 
-                <h2>Connexion</h2>
+                <h2>Connexion
+                    <?php
+                    echo "tentativeDeConnexion = " . $cUneTentativeDeConnexion . "<br>";
+                    echo "connecte = " . $connecte;
+                    ?>
+                </h2>
 
                 <div id="interactif">
 
                     <div>
                         <label for="mail">
                             <?php
-                            if ($tentativeDeConnexion && !$connecte) { /*a essayé de se co mais c'est un échec*/
+                            if ($cUneTentativeDeConnexion && !$connecte) { /*a essayé de se co mais c'est un échec*/
                                 echo "<h5 class='error'>Mail <span>- Mail ou mot de passe invalide</span></h5>";
                             } else {
                                 echo "<h5>Mail</h5>";
-                                header('Location: ./compte.php');
+                                // header('Location: ./compte.php');
                                 // sinon quitte
-                                exit();
+                                // exit();
                             }
                             ?>
                         </label><br>
@@ -83,13 +93,13 @@ if (!empty($_POST)) { /*Y a t-il au moins une valeur transmise par un formulaire
                     <div>
                         <label for="mdp">
                             <?php
-                            if ($tentativeDeConnexion && !$connecte) {
+                            if ($cUneTentativeDeConnexion && !$connecte) {
                                 echo "<h5 class='error'>Mot de passe <span>- Mail ou mot de passe invalide</span></h5>";
                             } else {
                                 echo "<h5>Mot de passe</h5>";
-                                header('Location: ./compte.php');
+                                // header('Location: ./compte.php');
                                 // sinon quitte
-                                exit();
+                                // exit();
                             }
                             ?>
                         </label><br>

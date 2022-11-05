@@ -13,9 +13,9 @@
     <header>
         <h3>GALAXY STORE</h3>
         <ul class="button">
-            <h5><a href="./index.php">A propos de nous</a></h5>
-            <h5><a href="./boutique.php">Boutique</a></h5>
-            <h5 id="butSelected"><a href="./connexion.php">Inscription</a></h5>
+            <h5><a href="./../../index.php">A propos de nous</a></h5>
+            <h5><a href="./../boutique/boutique.php">Boutique</a></h5>
+            <h5 id="butSelected"><a href="./inscription.php">Inscription</a></h5>
         </ul>
     </header>
 
