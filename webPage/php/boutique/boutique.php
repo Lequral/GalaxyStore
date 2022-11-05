@@ -19,20 +19,26 @@
         </ul>
     </header>
 
-    <h1 id="boutique">BOUTIQUE</h1>
-        
-    <div id="planete">
-        <h2>Planètes</h2>
-    </div>
-        
-    <div id="etoile">
-        <h2>Etoiles</h2>
-    </div>
-        
+    
 
 
 
     <main>
+        <h1 id="boutique">BOUTIQUE</h1>
+        
+        <div id="planete">
+            <h2>Planètes</h2>
+        </div>
+
+        <div id="case">
+            
+
+        </div>
+            
+        <div id="etoile">
+            <h2>Etoiles</h2>
+        </div>
+        
     </main>
 
     <footer></footer>
