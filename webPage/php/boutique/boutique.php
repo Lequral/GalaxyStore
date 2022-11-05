@@ -30,13 +30,17 @@
             <h2>Planètes</h2>
         </div>
 
-        <div id="case">
-            
+        <div class="case" id="p1">
+
 
         </div>
             
         <div id="etoile">
             <h2>Etoiles</h2>
+        </div>
+
+        <div class="case" id="e1">
+            
         </div>
         
     </main>

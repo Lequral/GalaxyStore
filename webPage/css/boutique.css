@@ -55,22 +55,31 @@ h4 {
 	width: 99px;
 	height: 29px;
 	left: 200px;
-	top: 640px;
+	top: 550px;
 }
 
 
-#case {
+.case {
 	position: absolute;
-	left: 10%;
-	right: 10%;
-	top: 50%;
-	bottom: 10%;
 	background: #0C264E;
 	border-radius: 32px;
 	width: 150px;
 	height: 150px;
 
+}
 
+#p1{
+	left: 10%;
+	right: 10%;
+	top: 50%;
+	bottom: 10%;
+}
+
+#e1{ 
+	left: 10%;
+	right: 10%;
+	top: 95%;
+	bottom: 10%;
 }
 
 
