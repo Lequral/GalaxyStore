@@ -96,10 +96,10 @@ echo "<!--connecte = " . $connecte . "-->";
                             ?>
                         </label><br>
                         <input type="text" name="mail" id="mail" required value="<?php
-                                                                            if ($cUneTentativeDeConnexion && $connecte) {
-                                                                                echo $infoCompte["mail"];
-                                                                            }
-                                                                            ?>">
+                                                                                    if ($cUneTentativeDeConnexion && $connecte) {
+                                                                                        echo $infoCompte["mail"];
+                                                                                    }
+                                                                                    ?>">
                     </div>
                     <div>
                         <label for="mdp">
@@ -114,10 +114,10 @@ echo "<!--connecte = " . $connecte . "-->";
                             ?>
                         </label><br>
                         <input type="password" name="mdp" id="mdp" required value="<?php
-                                                                            if ($cUneTentativeDeConnexion && $connecte) {
-                                                                                echo $infoCompte["mdp"];
-                                                                            }
-                                                                            ?>">
+                                                                                    if ($cUneTentativeDeConnexion && $connecte) {
+                                                                                        echo $infoCompte["mdp"];
+                                                                                    }
+                                                                                    ?>">
                     </div>
 
                     <button type="submit">
@@ -128,12 +128,6 @@ echo "<!--connecte = " . $connecte . "-->";
                         <p>Vous n'avez pas de compte <a href="./inscription.php" class="small_link">S'inscrire</a></p>
                     </div>
 
-                    <?php
-                    if ($connecte) {
-                        echo "<script type=\"text/javascript\">window.onload=function(){document.forms['connexion'].submit();}</script>";
-                    }
-                    ?>
-
                 </div>
         </form>
     </main>
@@ -141,5 +135,11 @@ echo "<!--connecte = " . $connecte . "-->";
     <footer></footer>
 
 </body>
+
+<?php
+if ($connecte) {
+    echo "<script type=\"text/javascript\">window.onload=function(){document.forms['connexion'].submit();}</script>";
+}
+?>
 
 </html>
