@@ -1,3 +1,74 @@
 body {
     background-image: url(../statique/image/EtoilesBg.png), linear-gradient(-45deg,rgba(24, 72, 125,0.5),rgba(15, 16, 29,0.2),rgba(33, 20, 57,0.5));
 }
+
+
+
+h1 {
+	font-family: 'Lexend';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 76.24px;
+	line-height: 100%;
+}
+
+
+h2 {
+	font-family: 'Lexend';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 29.12px;
+	line-height: 100%;
+	color: #FFFFFF;
+}
+
+h4 {
+	font-family: 'Lexend';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 29.12px;
+	line-height: 100%;
+	text-align: center;
+	color: #C6C6C6;
+}
+
+#boutique{
+	position: absolute;
+	width: 350px;
+	height: 76px;
+	left: 200px;
+	top: 128px;
+}
+
+
+#planete {
+	position: absolute;
+	width: 126px;
+	height: 29px;
+	left: 200px;
+	top: 275px;
+
+}
+
+#etoile{
+	position: absolute;
+	width: 99px;
+	height: 29px;
+	left: 200px;
+	top: 640px;
+}
+
+
+#case {
+	position: absolute;
+	left: 0%;
+	right: 0%;
+	top: 0%;
+	bottom: 0%;
+	background: #0C264E;
+	border-radius: 32px;
+
+}
+
+
+
