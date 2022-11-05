@@ -1,0 +1,24 @@
+body {
+    background-image: url(../statique/image/EtoilesBg.png), url(../statique/image/PlaneteBg.png), linear-gradient(-45deg, rgba(24, 72, 125, 0.5), rgba(15, 16, 29, 0.2), rgba(33, 20, 57, 0.5));
+}
+
+main > h1{
+    margin: 0 0 20px 0;
+    height: min-content;
+    grid-area: 1 / 1 / span 1 / span 12;
+    align-content: center;
+}
+
+main > div:nth-child(2) {
+    grid-area: 2 / 1 / 2 / span 6;
+}
+
+main > div:nth-child(3) {
+    /*on prend le 3e element de main sachant que ça doit être un div*/
+    grid-area: 3 / 6 / span 1 / span 6;
+    /* et on le met sur la ligne 2 en l'étendant sur 1 ligne et sur la colonne 6 en l'étendant sur 6 colonnes*/
+}
+
+main {
+    grid-template-rows: min-content 1fr 1fr 5vh;
+}

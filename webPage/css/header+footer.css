@@ -1,0 +1,86 @@
+body {
+    background-color: #14112B;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: lighten;
+
+    display: grid;
+    grid-template: min-content 1fr / repeat(12, 75px); 
+    /* 2 lignes (une la + petite possible et l'autre prend la place restante) et 12 colonnes de 75px */
+    column-gap: 15px;
+    row-gap: 10vh;
+    justify-content: center;
+
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    transition: all 1s;
+}
+
+header {
+    grid-area: 1 / 1 / 1 / span 12;
+    /* prend tt la première ligne */
+
+    display: grid;
+    grid-template-columns: subgrid;
+    align-items: center;
+    margin: 20px 0;
+    height: min-content;
+}
+
+h3 {
+    margin: 0;
+    grid-column-end: span 3;
+}
+
+ul {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 7 / span 6;
+
+    margin: 0;
+    padding: 0;
+}
+
+h5 {
+    text-transform: capitalize;
+    list-style-type: none;
+}
+
+ul>h5:nth-child(1) {
+    grid-column: span 3; /*on prend le 1er h5 et on l'étend sur 3 colonnes*/
+}
+ul>h5:nth-child(2) {
+    grid-column: span 2;
+}
+ul>h5:nth-child(3) { /*on prend le 3e h5 et on l'étend sur 1 colonnes*/
+    grid-column: span 1;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+#butSelected {
+    text-decoration: underline;
+    pointer-events: none;
+}
+
+main {
+    grid-column: span 12;
+
+    min-height: 70vh;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-template-rows: 1fr 1fr;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 45px;
+    background: linear-gradient(rgba(20, 17, 43, 0), rgb(20, 17, 43));
+}
