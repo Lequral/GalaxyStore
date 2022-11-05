@@ -29,6 +29,7 @@ h1 { /*Très grd titre*/
   margin-top: 0;
   font-size: 4.236rem;
   font-weight: 700;
+  text-transform: capitalize;
 }
 
 h2 { /*Titre un + grd que le p*/

@@ -95,11 +95,11 @@ echo "<!--connecte = " . $connecte . "-->";
                             }
                             ?>
                         </label><br>
-                        <input type="text" name="mail" id="mail" required <?php
+                        <input type="text" name="mail" id="mail" required value="<?php
                                                                             if ($cUneTentativeDeConnexion && $connecte) {
-                                                                                echo 'value="' . $infoCompte["mail"] . '"';
+                                                                                echo $infoCompte["mail"];
                                                                             }
-                                                                            ?>>
+                                                                            ?>">
                     </div>
                     <div>
                         <label for="mdp">
@@ -113,11 +113,11 @@ echo "<!--connecte = " . $connecte . "-->";
                             }
                             ?>
                         </label><br>
-                        <input type="password" name="mdp" id="mdp" required <?php
+                        <input type="password" name="mdp" id="mdp" required value="<?php
                                                                             if ($cUneTentativeDeConnexion && $connecte) {
-                                                                                echo 'value="' . $infoCompte["mdp"] . '"';
+                                                                                echo $infoCompte["mdp"];
                                                                             }
-                                                                            ?>>
+                                                                            ?>">
                     </div>
 
                     <button type="submit">
