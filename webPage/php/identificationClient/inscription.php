@@ -61,4 +61,9 @@
 
 </body>
 
+<script>
+    /* Le input password est focus, on peut voir le contenu.*/
+    var i=document.querySelector("input[type=password]");i.addEventListener("focusin",e=>{e.target.setAttribute("type","text");});i.addEventListener("focusout",e=>{e.target.setAttribute("type", "password");});
+</script>
+
 </html>
