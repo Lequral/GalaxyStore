@@ -1,56 +1,66 @@
 <?php
 
-function tentativeInscription()
-{
-    if (empty($_POST)) { /*Y a t-il aucune valeur transmise par un formulaire */
-        return [FALSE, FALSE];
-    }
-
-    // echo "<!-- essai de co -->";
+if (empty($_POST)) { /*Y a t-il aucune valeur transmise par un formulaire */
+    $resultats = [FALSE, FALSE];
+} else {
 
     if (is_null($_POST["pseudo"])) { /* pseudo est nul ?*/
-        return [FALSE, FALSE];
-    }
-
-    $pseudo = $_POST["pseudo"];
-    // echo "<!-- " . "<br>pseudo est déf = " . $pseudo . "-->";
-
-    if (is_null($_POST["mail"])) { /* mail est nul ?*/
-        return [FALSE, FALSE];
-    }
-
-    $mail = $_POST["mail"];
-    // echo "<!-- " . "<br>mail est déf = " . $mail . "-->";
-
-    if (is_null($_POST["mdp"])) { /* mdp est nul ?*/
-        return [FALSE, FALSE];
-    }
-
-    $mdp = $_POST["mdp"];
-    // echo "<!-- " . "<br>mdp est déf = " . $mdp . "-->";
-
-    require_once("./../identificationBD.php");
-
-    $sql = "SELECT mail, mdp FROM client WHERE mail='$mail' AND mdp='$mdp'";
-
-    $results = $bd->query($sql);
-    
-    $infoCompte = $results->fetchAll(PDO::FETCH_OBJ);
-
-    unset($bd);
-
-    if (empty($infoCompte)) {
-        return [TRUE, TRUE];
+        $resultats = [FALSE, FALSE];
     } else {
-        return [TRUE, FALSE];
+
+        $pseudo = $_POST["pseudo"];
+
+        if (is_null($_POST["mail"])) { /* mail est nul ?*/
+            $resultats = [FALSE, FALSE];
+        } else {
+
+            $mail = $_POST["mail"];
+
+            if (is_null($_POST["mdp"])) { /* mdp est nul ?*/
+                $resultats = [FALSE, FALSE];
+            } else {
+
+                $mdp = $_POST["mdp"];
+
+                require_once("./../identificationBD.php");
+
+                $sql = "SELECT mail, mdp FROM client WHERE mail='$mail' AND mdp='$mdp'";
+
+                $results = $bd->query($sql);
+
+                $compte = $results->fetchAll(PDO::FETCH_OBJ);
+                
+                if (empty($compte)) {
+                    $resultats = [TRUE, TRUE];
+                } else {
+                    $resultats = [TRUE, FALSE];
+                }
+            }
+        }
     }
 }
-$resultats = tentativeInscription();
+
+
 $cUneTentativedInscription = $resultats[0];
 $compteDispo = $resultats[1];
 
 echo "<!--cUneTentativedInscription = " . $cUneTentativedInscription . "-->";
 echo "<!--compteDispo = " . $compteDispo . "-->";
+
+$nb = 0;
+
+if ($cUneTentativedInscription && $compteDispo) {
+
+    $sql = 'INSERT INTO client(`pseudo`, `mail`, `argent`, `mdp`) VALUES ("' . $_POST["pseudo"] . '", "' . $_POST["mail"] . '", 0, "' . $_POST["mdp"] . '");';
+
+    // echo $sql;
+
+    $nb = $bd->exec($sql);
+    // echo "nb =" . $nb;
+
+}
+
+unset($bd);
 ?>
 
 <!DOCTYPE html>
@@ -80,14 +90,18 @@ echo "<!--compteDispo = " . $compteDispo . "-->";
 
                 <h2>
                     <?php
-                    if(!$cUneTentativedInscription) {
+                    if (!$cUneTentativedInscription) {
                         echo "Inscription";
-                    }else{
-                        if($compteDispo) {
+                    } else {
+                        if ($compteDispo) {
                             //inscription
-                            echo "Inscription...";
-                        }else {
-                            echo "Indentifiant.s invalide.s";
+                            if ($nb >= 1) {
+                                echo "Inscription réussi";
+                            } elseif ($nb == 0) {
+                                echo "Echec de l'inscription";
+                            }
+                        } else {
+                            echo "Inscription";
                         }
                     }
                     ?>
@@ -95,32 +109,76 @@ echo "<!--compteDispo = " . $compteDispo . "-->";
 
                 <div id="interactif">
 
-                    <div>
+                    <div <?php
+                            if ($nb > 0) { /* Si inscription réussi */
+                                echo 'style="display: none;"';
+                            }
+                            ?>>
                         <label for="pseudo">
-                            <h5>Pseudo</h5>
+                            <?php
+                            if ($cUneTentativedInscription && !$compteDispo) {
+                                echo '<h5 class="error">Pseudo <span>- Pseudo invalide</span></h5>';
+                            } else {
+                                echo '<h5>Pseudo</h5>';
+                            }
+                            ?>
                         </label><br>
                         <input type="text" id="pseudo" name="pseudo" required>
                     </div>
-                    <div>
+                    <div <?php
+                            if ($nb > 0) { /* Si inscription réussi */
+                                echo 'style="display: none;"';
+                            }
+                            ?>>
                         <label for="mail">
-                            <h5>Mail</h5>
+                            <?php
+                            if ($cUneTentativedInscription && !$compteDispo) {
+                                echo '<h5 class="error">Mail <span>- Mail invalide</span></h5>';
+                            } else {
+                                echo '<h5>Mail</h5>';
+                            }
+                            ?>
                         </label><br>
                         <input type="text" id="mail" name="mail" required>
                     </div>
-                    <div>
+                    <div <?php
+                            if ($nb > 0) { /* Si inscription réussi */
+                                echo 'style="display: none;"';
+                            }
+                            ?>>
                         <label for="mdp">
-                            <h5>Mot de passe</h5>
+                            <?php
+                            if ($cUneTentativedInscription && !$compteDispo) {
+                                echo '<h5 class="error">Mot de passe <span>- Mot de passe invalide</span></h5>';
+                            } else {
+                                echo '<h5>Mot de passe</h5>';
+                            }
+                            ?>
                         </label><br>
                         <input type="password" id="mdp" name="mdp" required>
                     </div>
 
-                    <button type="submit">
+                    <button type="submit" <?php
+                                            if ($nb > 0) { /* Si inscription réussi */
+                                                echo 'style="display: none;"';
+                                            }
+                                            ?>>
                         <h5>S'inscrire</h5>
                     </button>
-                    
-                    <div class="small_text">
+
+                    <div class="small_text" <?php
+                                            if ($nb > 0) { /* Si inscription réussi */
+                                                echo 'style="display: none;"';
+                                            }
+                                            ?>>
                         <p>Vous avez déjà un compte <a href="./connexion.php" class="small_link">Se connecter</a></p>
                     </div>
+
+                    <?php
+                    if ($nb > 0) { /* Si inscription réussi */
+                        echo '<a href="./connexion.php" class="small_link" style="text-align:center;">Se connecter</a>';
+                    }
+                    ?>
                 </div>
         </form>
     </main>
@@ -131,7 +189,13 @@ echo "<!--compteDispo = " . $compteDispo . "-->";
 
 <script>
     /* Le input password est focus, on peut voir le contenu.*/
-    var i=document.querySelector("input[type=password]");i.addEventListener("focusin",e=>{e.target.setAttribute("type","text");});i.addEventListener("focusout",e=>{e.target.setAttribute("type", "password");});
+    var i = document.querySelector("input[type=password]");
+    i.addEventListener("focusin", e => {
+        e.target.setAttribute("type", "text");
+    });
+    i.addEventListener("focusout", e => {
+        e.target.setAttribute("type", "password");
+    });
 </script>
 
 </html>
