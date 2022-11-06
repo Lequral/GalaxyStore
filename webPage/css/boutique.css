@@ -1,56 +1,62 @@
 body {
-    background-image: url(../statique/image/EtoilesBg.png), linear-gradient(-45deg,rgba(24, 72, 125,0.5),rgba(15, 16, 29,0.2),rgba(33, 20, 57,0.5));
+	background-image: url(../statique/image/EtoilesBg.png), linear-gradient(-45deg, rgba(24, 72, 125, 0.5), rgba(15, 16, 29, 0.2), rgba(33, 20, 57, 0.5));
 }
 
-
-
-h1 {
-	font-family: 'Lexend';
-	font-style: normal;
-	font-weight: 700;
-	font-size: 76.24px;
-	line-height: 100%;
+main {
+	grid-template-rows: 1fr 30px 1fr 30px 1fr;
+	/* 1fr = 1 divisé par le nombre total de 1fr; ici 1fr = 1/3 de l'espace disponible*/
 }
 
-
-h2 {
-	font-family: 'Lexend';
-	font-style: normal;
-	font-weight: 700;
-	font-size: 29.12px;
-	line-height: 100%;
-	color: #FFFFFF;
-}
-
+/* J'ai enlevé ce qui était en double parce que la majorité est déjà écrit dans police.css qui est importé sur tt les pages*/
 h4 {
-	font-family: 'Lexend';
-	font-style: normal;
-	font-weight: 600;
-	font-size: 29.12px;
-	line-height: 100%;
 	text-align: center;
-	color: #C6C6C6;
 }
 
-#boutique{
-	position: absolute;
+/* ici tu pourrais directement utilisé h1 pk ce fichier css est utilisé que pour cette page*/
+#boutique
+
+/*ou h1*/
+	{
+
+	/* position: absolute;
 	width: 350px;
 	height: 76px;
 	left: 432px;
-	top: 128px;
+	top: 128px; */
+
+	grid-column-start: 1; /* Ici je détails tt pour être le + compréhensible possible */
+	grid-column-end: 13;
+	/* Ca s'écrit aussi 
+	grid-column: 1 / 13; */
+
+	grid-row-start: 1;
+	grid-row-end: 1;
+	/* Ici aussi 
+	grid-row: 1 / 1; */
+
+	/* Tu peux mm tous compacter avec cette syntaxe
+	grid-area: <row-start> / <column-start> / <row-end> / <column-end>
+	ça donne ça  
+	grid-area: 1 / 1 / 1 / 13;*/
 }
 
 
 #planete {
-	position: absolute;
+	/* position: absolute;
 	width: 126px;
 	height: 29px;
 	left: 200px;
-	top: 275px;
+	top: 275px; */
 
+	grid-area: 2 / 1 / 2 / 13;
+	
+	/*s'écrit aussi 
+	grid-row: 2 / 2;
+	grid-column: 1 / 13;*/
+	/* stv https://developer.mozilla.org/fr/docs/Web/CSS/grid-area */
 }
 
-#etoile{
+#etoile {
 	position: absolute;
 	width: 99px;
 	height: 29px;
@@ -68,19 +74,16 @@ h4 {
 
 }
 
-#p1{
+#p1 {
 	left: 10%;
 	right: 10%;
 	top: 50%;
 	bottom: 10%;
 }
 
-#e1{ 
+#e1 {
 	left: 10%;
 	right: 10%;
 	top: 95%;
 	bottom: 10%;
 }
-
-
-

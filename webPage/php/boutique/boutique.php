@@ -26,6 +26,7 @@
     <main>
         <h1 id="boutique">BOUTIQUE</h1>
         
+         <!-- ici le div est pas nécessaire vu que tu as qu'un élément dedans, après tu peux regrouper le titre avec les cases stv mais c'est pas obligé. -->
         <div id="planete">
             <h2>Planètes</h2>
         </div>
@@ -35,6 +36,7 @@
 
         </div>
             
+         <!-- ici aussi  -->
         <div id="etoile">
             <h2>Etoiles</h2>
         </div>
