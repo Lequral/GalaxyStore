@@ -1,3 +1,58 @@
+<?php
+
+function tentativeInscription()
+{
+    if (empty($_POST)) { /*Y a t-il aucune valeur transmise par un formulaire */
+        return [FALSE, FALSE];
+    }
+
+    // echo "<!-- essai de co -->";
+
+    if (is_null($_POST["pseudo"])) { /* pseudo est nul ?*/
+        return [FALSE, FALSE];
+    }
+
+    $pseudo = $_POST["pseudo"];
+    // echo "<!-- " . "<br>pseudo est déf = " . $pseudo . "-->";
+
+    if (is_null($_POST["mail"])) { /* mail est nul ?*/
+        return [FALSE, FALSE];
+    }
+
+    $mail = $_POST["mail"];
+    // echo "<!-- " . "<br>mail est déf = " . $mail . "-->";
+
+    if (is_null($_POST["mdp"])) { /* mdp est nul ?*/
+        return [FALSE, FALSE];
+    }
+
+    $mdp = $_POST["mdp"];
+    // echo "<!-- " . "<br>mdp est déf = " . $mdp . "-->";
+
+    require_once("./../identificationBD.php");
+
+    $sql = "SELECT mail, mdp FROM client WHERE mail='$mail' AND mdp='$mdp'";
+
+    $results = $bd->query($sql);
+    
+    $infoCompte = $results->fetchAll(PDO::FETCH_OBJ);
+
+    unset($bd);
+
+    if (empty($infoCompte)) {
+        return [TRUE, TRUE];
+    } else {
+        return [TRUE, FALSE];
+    }
+}
+$resultats = tentativeInscription();
+$cUneTentativedInscription = $resultats[0];
+$compteDispo = $resultats[1];
+
+echo "<!--cUneTentativedInscription = " . $cUneTentativedInscription . "-->";
+echo "<!--compteDispo = " . $compteDispo . "-->";
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -23,7 +78,20 @@
         <form action="./inscription.php" method="POST">
             <div class="container">
 
-                <h2>Inscription</h2>
+                <h2>
+                    <?php
+                    if(!$cUneTentativedInscription) {
+                        echo "Inscription";
+                    }else{
+                        if($compteDispo) {
+                            //inscription
+                            echo "Inscription...";
+                        }else {
+                            echo "Indentifiant.s invalide.s";
+                        }
+                    }
+                    ?>
+                </h2>
 
                 <div id="interactif">
 
@@ -31,19 +99,19 @@
                         <label for="pseudo">
                             <h5>Pseudo</h5>
                         </label><br>
-                        <input type="text" id="pseudo" required>
+                        <input type="text" id="pseudo" name="pseudo" required>
                     </div>
                     <div>
                         <label for="mail">
                             <h5>Mail</h5>
                         </label><br>
-                        <input type="text" id="mail" required>
+                        <input type="text" id="mail" name="mail" required>
                     </div>
                     <div>
                         <label for="mdp">
                             <h5>Mot de passe</h5>
                         </label><br>
-                        <input type="password" id="mdp" required>
+                        <input type="password" id="mdp" name="mdp" required>
                     </div>
 
                     <button type="submit">

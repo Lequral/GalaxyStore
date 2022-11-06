@@ -2,9 +2,10 @@
 $mail = $_POST["mail"];
 $mdp = $_POST["mdp"];
 
+
 require_once("./../identificationBD.php");
 
-$sql = "SELECT pseudo, argent FROM client WHERE mail='$mail' AND mdp='$mdp'";
+$sql = "SELECT idCl, pseudo, argent FROM client WHERE mail='$mail' AND mdp='$mdp'";
 
 $results = $bd->query($sql);
 
@@ -37,18 +38,21 @@ unset($bd);
     </header>
 
     <main>
-        <form action="./compte.php" method="POST">
+        <form action="./modifierCompte.php" method="POST">
             <div class="container">
 
                 <h2>Mon compte</h2>
 
                 <div id="interactif">
-
+                    
+                    <?php
+                    echo '<input type="number" name="idCl" id="idCl" style="display: none;" value='.$infoCompte["idCl"].'>';
+                    ?>
                     <div>
                         <label for="pseudo">
                             <h5>Pseudo</h5>
                         </label><br>
-                        <input type="text" id="pseudo" required value="<?php
+                        <input type="text" id="pseudo" name="pseudo" required value="<?php
                                                                         echo $infoCompte["pseudo"];
                                                                         ?>">
                     </div>
@@ -56,7 +60,7 @@ unset($bd);
                         <label for="mail">
                             <h5>Mail</h5>
                         </label><br>
-                        <input type="text" id="mail" required value="<?php
+                        <input type="text" id="mail" name="mail" required value="<?php
                                                                         echo $infoCompte["mail"];
                                                                         ?>">
                     </div>
@@ -64,7 +68,7 @@ unset($bd);
                         <label for="argent">
                             <h5>Argent</h5>
                         </label><br>
-                        <input type="number" id="argent" required value="<?php
+                        <input type="number" id="argent" name="argent" required value="<?php
                                                                         echo $infoCompte["argent"];
                                                                         ?>">
                     </div>
@@ -72,13 +76,17 @@ unset($bd);
                         <label for="mdp">
                             <h5>Mot de passe</h5>
                         </label><br>
-                        <input type="password" id="mdp" required value="<?php
+                        <input type="password" id="mdp" name="mdp" required value="<?php
                                                                         echo $infoCompte["mdp"];
                                                                         ?>">
                     </div>
 
-                    <button type="submit">
+                    <button type="submit" name="submit" value="modifier">
                         <h5>Modifier</h5>
+                    </button>
+
+                    <button type="submit" name="submit" value="supprimer" class="danger">
+                        <h5>Supprimer</h5>
                     </button>
                 </div>
         </form>

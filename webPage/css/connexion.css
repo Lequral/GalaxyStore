@@ -1,5 +1,11 @@
 body {
     background-image: url(../statique/image/EtoilesBg.png), linear-gradient(-45deg, rgba(24, 72, 125, 0.5), rgba(15, 16, 29, 0.2), rgba(33, 20, 57, 0.5));
+    row-gap: 0;
+}
+
+main {
+    grid-template-rows: none;
+    align-content: center;
 }
 
 form {
@@ -19,7 +25,7 @@ form>.container {
 
     display: flex;
     flex-flow: column nowrap;
-    row-gap: 6vh;
+    row-gap: 4vh;
     height: min-content;
 }
 
@@ -89,4 +95,12 @@ h5.error {
     color: #f38688;
     font-style: italic;
     font-size: 99%; /*pour éviter un retour à la ligne*/
+}
+
+.danger {
+    background-color: #922720;
+}
+
+#smallA {
+    text-align: center;
 }
