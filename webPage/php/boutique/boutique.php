@@ -30,23 +30,96 @@
         <div id="planete">
             <h2>Planètes</h2>
         </div>
-
-        <div class="casePlanete">
-
-
-        </div>
-
-
             
-         <!-- ici aussi  -->
+        <div class="scroll" id="scrollP">
+            <div id="allCasesP">
+                <div class="case">
+                    
+                </div>
+                
+                <div class="case">
+                </div>
+                
+                <div class="case">
+                </div>
+                
+                <div class="case">
+                </div>
+                
+                <div class="case">
+                </div>
+                
+                <div class="case">
+                </div>
+                
+                <div class="case">
+                </div>
+                
+                <div class="case">
+                </div>
+                
+                <div class="case">
+                </div>
+                
+                <div class="case">
+                </div>
+                
+                <div class="case">
+                </div>
+                
+                <div class="case">
+                </div>
+                
+                <div class="case">
+                </div>
+                
+                <div class="case">
+                </div>
+                
+                <div class="case">
+                </div>
+            </div>
+        </div>
+            
+         
         <div id="etoile">
             <h2>Etoiles</h2>
         </div>
 
-        <div class="caseEtoile">
-            
+        <div class="scroll" id="scrollE">
+            <div id="allCasesE">
+                <div class="case"> 
+                </div>
+                <div class="case"> 
+                </div>
+                <div class="case"> 
+                </div>
+                <div class="case"> 
+                </div>
+                <div class="case"> 
+                </div>
+                <div class="case"> 
+                </div>
+                <div class="case"> 
+                </div>
+                <div class="case"> 
+                </div>
+                <div class="case"> 
+                </div>
+                <div class="case"> 
+                </div>
+                <div class="case"> 
+                </div>
+                <div class="case"> 
+                </div>
+                <div class="case"> 
+                </div>
+                <div class="case"> 
+                </div>
+                <div class="case"> 
+                </div>
+            </div>
         </div>
-        
     </main>
 
     <footer></footer>

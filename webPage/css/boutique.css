@@ -34,30 +34,77 @@ h4 {
 
 #etoile {
 
-	grid-area: 6 / 1 / 6 / 13;
+	grid-area: 4 / 1 / 4 / 13;
+	
+
 }
 
 
-.casePlanete {
+
+
+#allCasesP{
+	
+	display: flex;
+	justify-content: center;
+	gap:15px;
+	
+	flex-flow: row nowrap;
+	width: min-content;
+	
+	
+
+
+}
+
+#allCasesE{
+	
+	display: flex;
+	justify-content: center;
+	gap:15px;
+	
+	flex-flow: row nowrap;
+	width: min-content;
+	
+
+
+
+}
+
+.case {
 	
 	background: #0C264E;
 	border-radius: 32px;
 	width: 150px;
+	height: 150px;
+	
+
+}
+
+.scroll{
+
+	overflow-x: scroll;
+	height: 150px;
+
+
+
+}
+
+
+
+#scrollP{
 	grid-area: 3 / 1 / 3 / 13;
-	grid-column-gap: 1fr;
+
 
 }
 
-.caseEtoile {
-	position: absolute;
-	background: #0C264E;
-	border-radius: 32px;
-	width: 150px;
+
+#scrollE{
 	grid-area: 5 / 1 / 5 / 13;
-	grid-column-gap: 1fr;
-	
+
+
 
 }
+
 
 
 
