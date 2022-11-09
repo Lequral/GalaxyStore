@@ -31,17 +31,19 @@
             <h2>Planètes</h2>
         </div>
 
-        <div class="case" id="p1">
+        <div class="casePlanete">
 
 
         </div>
+
+
             
          <!-- ici aussi  -->
         <div id="etoile">
             <h2>Etoiles</h2>
         </div>
 
-        <div class="case" id="e1">
+        <div class="caseEtoile">
             
         </div>
         
