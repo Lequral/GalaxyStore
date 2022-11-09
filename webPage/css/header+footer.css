@@ -22,7 +22,8 @@ header {
     /* prend tt la première ligne */
 
     display: grid;
-    grid-template-columns: subgrid;
+    grid-template-columns: repeat(12, 75px);
+    column-gap: 15px;
     align-items: center;
     margin: 20px 0;
     height: min-content;
@@ -35,7 +36,8 @@ h3 {
 
 ul {
     display: grid;
-    grid-template-columns: subgrid;
+    grid-template-columns: repeat(6, 75px);
+    column-gap: 15px;
     grid-column: 7 / span 6;
 
     margin: 0;
@@ -73,7 +75,8 @@ main {
 
     min-height: 70vh;
     display: grid;
-    grid-template-columns: subgrid;
+    grid-template-columns: repeat(12, 75px);
+    column-gap: 15px;
     grid-template-rows: 1fr 1fr;
 }
 

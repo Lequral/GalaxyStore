@@ -2,8 +2,8 @@ body {
 	background-image: url(../statique/image/EtoilesBg.png), linear-gradient(-45deg, rgba(24, 72, 125, 0.5), rgba(15, 16, 29, 0.2), rgba(33, 20, 57, 0.5));
 }
 
-main {
-	grid-template-rows: 1fr 30px 1fr 30px 1fr;
+main {	
+	grid-template-rows: 16vh 40px 1fr 40px 1fr;
 	/* 1fr = 1 divisé par le nombre total de 1fr; ici 1fr = 1/3 de l'espace disponible*/
 }
 
@@ -14,98 +14,65 @@ h4 {
 
 /* ici tu pourrais directement utilisé h1 pk ce fichier css est utilisé que pour cette page*/
 #boutique {
-
-
 	grid-column-start: 1;
 	grid-column-end: 13;
 
 
 	grid-row-start: 1;
 	grid-row-end: 1;
-
 }
 
 
 #planete {
-
 	grid-area: 2 / 1 / 2 / 13;
-	
 }
 
 #etoile {
-
 	grid-area: 4 / 1 / 4 / 13;
-	
-
 }
 
 
 
 
-#allCasesP{
-	
+#allCasesP {
 	display: flex;
-	justify-content: center;
-	gap:15px;
-	
+	gap: 15px;
+
 	flex-flow: row nowrap;
 	width: min-content;
-	
-	
-
-
 }
 
-#allCasesE{
-	
+#allCasesE {
 	display: flex;
 	justify-content: center;
-	gap:15px;
-	
+	gap: 15px;
+
 	flex-flow: row nowrap;
 	width: min-content;
-	
-
-
-
 }
 
 .case {
-	
 	background: #0C264E;
 	border-radius: 32px;
-	width: 150px;
+	width: 165px;
 	height: 150px;
-	
-
 }
 
-.scroll{
-
+.scroll {
 	overflow-x: scroll;
-	height: 150px;
-
-
-
+	min-height: 150px;
+	height: min-content;
+	padding: 5px 0;
+	box-sizing: border-box;
 }
 
 
 
-#scrollP{
+#scrollP {
 	grid-area: 3 / 1 / 3 / 13;
-
-
 }
 
 
-#scrollE{
+#scrollE {
 	grid-area: 5 / 1 / 5 / 13;
-
-
-
 }
-
-
-
-
-
