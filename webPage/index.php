@@ -55,7 +55,7 @@
                         </h5>
                     </li>
                     <li>
-                        <h5 id="butSelected"><a href="./php/identificationClient/compte.php">Mon compte</a></h5>
+                        <h5 id="butSelected"><a href="./php/identificationClient/connexion.php">Connexion</a></h5>
                     </li>';
             }
             ?>
