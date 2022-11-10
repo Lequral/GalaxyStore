@@ -1,8 +1,21 @@
 body {
     background-image: url(../statique/image/EtoilesBg.png), url(../statique/image/LUNE.jpg), linear-gradient(-45deg, rgba(24, 72, 125, 0.5), rgba(15, 16, 29, 0.2), rgba(33, 20, 57, 0.5));
-    background-size: 150%;
+    background-size: 134%;
     background-position-x: 50%;
     background-position-y: bottom;
+}
+
+#bgHeader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 85px;
+    background-color: rgba(20, 17, 43,0.1);
+    padding: 20px;
+    box-sizing: border-box;
+    border: 0;
+    z-index: -1;
 }
 
 main>h1 {

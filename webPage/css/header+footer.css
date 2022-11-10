@@ -5,7 +5,7 @@ body {
     background-blend-mode: lighten;
 
     display: grid;
-    grid-template: min-content 1fr / repeat(12, 75px); 
+    grid-template: min-content 1fr / repeat(12, 75px);
     /* 2 lignes (une la + petite possible et l'autre prend la place restante) et 12 colonnes de 75px */
     column-gap: 15px;
     row-gap: 10vh;
@@ -29,19 +29,6 @@ header {
     height: min-content;
 }
 
-#bgHeader {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 85px;
-    background-color: rgba(20, 17, 43,0.25);
-    padding: 20px;
-    box-sizing: border-box;
-    border: 0;
-    z-index: -1;
-    }
-
 h3 {
     margin: 0;
     grid-column-end: span 3;
@@ -63,12 +50,16 @@ h5 {
 }
 
 ul>h5:nth-child(1) {
-    grid-column: span 3; /*on prend le 1er h5 et on l'étend sur 3 colonnes*/
+    grid-column: span 3;
+    /*on prend le 1er h5 et on l'étend sur 3 colonnes*/
 }
+
 ul>h5:nth-child(2) {
     grid-column: span 2;
 }
-ul>h5:nth-child(3) { /*on prend le 3e h5 et on l'étend sur 1 colonnes*/
+
+ul>h5:nth-child(3) {
+    /*on prend le 3e h5 et on l'étend sur 1 colonnes*/
     grid-column: span 1;
     width: max-content;
 }
