@@ -17,6 +17,7 @@
             <h5><a href="./php/boutique/boutique.php">Boutique</a></h5>
             <h5><a href="./php/identificationClient/connexion.php">Connexion</a></h5>
         </ul>
+        <div id="bgHeader"></div>
     </header>
 
     <main>
@@ -25,10 +26,10 @@
             <h2>Qui sommes-nous ?</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam voluptate deserunt odit, sit rem fuga eius, impedit quisquam exercitationem facilis eos minus doloremque rerum! Blanditiis doloribus facilis quibusdam earum culpa?</p>
         </div>
-        <div>
+        <!-- <div>
             <h2>Que faisons-nous ?</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam voluptate deserunt odit, sit rem fuga eius, impedit quisquam exercitationem facilis eos minus doloremque rerum! Blanditiis doloribus facilis quibusdam earum culpa?</p>
-        </div>
+        </div> -->
     </main>
 
     <footer></footer>

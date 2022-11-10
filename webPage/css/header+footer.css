@@ -29,6 +29,19 @@ header {
     height: min-content;
 }
 
+#bgHeader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 99vw;
+    height: 85px;
+    background-color: rgba(20, 17, 43,0.25);
+    padding: 20px;
+    box-sizing: border-box;
+    border: 0;
+    z-index: -1;
+    }
+
 h3 {
     margin: 0;
     grid-column-end: span 3;
