@@ -12,16 +12,17 @@ form {
     grid-column: 4 / span 6;
 
     display: grid;
-    grid-template-columns: repeat(6, 75px);
     height: min-content;
     background-color: #0C264E;
     border-radius: 8px;
-    padding: 80px;
+    grid-template-columns: repeat(4, 75px);
+    padding: 90px;
+    gap: 15px;
 }
 
 form>.container {
     /* parent > element  =  veut dire que l'élément séléctionné est l'enfant direct du parent*/
-    grid-area: 1 / 2 / 1 / span 4;
+    grid-area: 1 / 1 / 1 / span 4;
 
     display: flex;
     flex-flow: column nowrap;
@@ -90,11 +91,12 @@ h5.error {
     color: #f38688;
 }
 
-.error > span {
+.error>span {
     text-transform: none;
     color: #f38688;
     font-style: italic;
-    font-size: 99%; /*pour éviter un retour à la ligne*/
+    font-size: 99%;
+    /*pour éviter un retour à la ligne*/
 }
 
 .danger {
