@@ -100,7 +100,7 @@ h5.error {
 }
 
 .danger {
-    background-color: #922720;
+    background-color: #922720 !important;
 }
 
 #smallA {

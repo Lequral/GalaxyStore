@@ -49,16 +49,16 @@ h5 {
     list-style-type: none;
 }
 
-ul>h5:nth-child(1) {
+ul>li:nth-child(1) {
     grid-column: span 3;
     /*on prend le 1er h5 et on l'étend sur 3 colonnes*/
 }
 
-ul>h5:nth-child(2) {
+ul>li:nth-child(2) {
     grid-column: span 2;
 }
 
-ul>h5:nth-child(3) {
+ul>li:nth-child(3) {
     /*on prend le 3e h5 et on l'étend sur 1 colonnes*/
     grid-column: span 1;
     width: max-content;
@@ -91,4 +91,56 @@ footer {
     width: 100%;
     height: 45px;
     background: linear-gradient(rgba(20, 17, 43, 0), rgb(20, 17, 43));
+}
+
+li {
+    list-style: none;
+}
+
+
+.hidden {
+    display: none;
+}
+
+form.noStyle {
+    grid-column: unset;
+
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+    grid-template: unset;
+    height: 100%;
+    gap: unset;
+    margin: 0;
+    padding: unset;
+
+    background: unset;
+    border-radius: unset;
+}
+
+button.likeA {
+    height: min-content;
+    width: max-content;
+    margin: 0;
+    padding: 0;
+
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+
+    font-size: unset;
+    border: none;
+    border-radius: 0;
+    background: none;
+    
+}
+
+button.likeA>h5 {
+    margin: .5rem 0 0 0;
+    text-transform: capitalize;
+}
+
+button.likeA:focus {
+    outline: none;
 }

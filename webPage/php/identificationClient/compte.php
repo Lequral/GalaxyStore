@@ -31,9 +31,51 @@ unset($bd);
     <header>
         <h3>GALAXY STORE</h3>
         <ul class="button">
-            <h5><a href="./../../index.php">A propos de nous</a></h5>
-            <h5><a href="./../boutique/boutique.php">Boutique</a></h5>
-            <h5 id="butSelected"><a href="./compte.php">Mon compte</a></h5>
+
+            <?php
+            if (isset($_POST) && isset($_POST["mail"]) && isset($_POST["mdp"])) { /*si connecté*/
+                echo '<li>
+                        <form action="./../../index.php" method="post" class="noStyle">
+                            <input type="text" name="mail" value="' . $mail . '" class="hidden"></input>
+                            <input type="password" name="mdp" value="' . $mdp . '" class="hidden"></input>
+                            <button type="submit" class="likeA">
+                                <h5>
+                                    A propos de nous
+                                </h5>
+                            </button>
+                        </form>
+                    </li>
+                    <li>
+                        <form action="./../boutique/boutique.php" method="post" class="noStyle">
+                            <input type="text" name="mail" value="' . $mail . '" class="hidden"></input>
+                            <input type="password" name="mdp" value="' . $mdp . '" class="hidden"></input>
+                            <button type="submit" class="likeA">
+                                <h5>
+                                    Boutique
+                                </h5>
+                            </button>
+                        </form>
+                    </li>
+                    <li>
+                        <h5 id="butSelected">Mon compte
+                        </h5>
+                    </li>';
+            } else {
+                echo '<li>
+                        <h5>
+                            <a href="./../../index.php">A propos de nous</a>
+                        </h5>
+                    </li>
+                    <li>
+                        <h5>
+                            <a href="./../boutique/boutique.php">Boutique</a>
+                        </h5>
+                    </li>
+                    <li>
+                        <h5 id="butSelected"><a href="./compte.php">Mon compte</a></h5>
+                    </li>';
+            }
+            ?>
         </ul>
     </header>
 
@@ -44,41 +86,41 @@ unset($bd);
                 <h2>Mon compte</h2>
 
                 <div id="interactif">
-                    
+
                     <?php
-                    echo '<input type="number" name="idCl" id="idCl" style="display: none;" value='.$infoCompte["idCl"].'>';
+                    echo '<input type="number" name="idCl" id="idCl" style="display: none;" value=' . $infoCompte["idCl"] . '>';
                     ?>
                     <div>
                         <label for="pseudo">
                             <h5>Pseudo</h5>
                         </label><br>
                         <input type="text" id="pseudo" name="pseudo" required value="<?php
-                                                                        echo $infoCompte["pseudo"];
-                                                                        ?>">
+                                                                                        echo $infoCompte["pseudo"];
+                                                                                        ?>">
                     </div>
                     <div>
                         <label for="mail">
                             <h5>Mail</h5>
                         </label><br>
                         <input type="text" id="mail" name="mail" required value="<?php
-                                                                        echo $infoCompte["mail"];
-                                                                        ?>">
+                                                                                    echo $infoCompte["mail"];
+                                                                                    ?>">
                     </div>
                     <div>
                         <label for="argent">
                             <h5>Argent</h5>
                         </label><br>
                         <input type="number" id="argent" name="argent" required value="<?php
-                                                                        echo $infoCompte["argent"];
-                                                                        ?>">
+                                                                                        echo $infoCompte["argent"];
+                                                                                        ?>">
                     </div>
                     <div>
                         <label for="mdp">
                             <h5>Mot de passe</h5>
                         </label><br>
                         <input type="password" id="mdp" name="mdp" required value="<?php
-                                                                        echo $infoCompte["mdp"];
-                                                                        ?>">
+                                                                                    echo $infoCompte["mdp"];
+                                                                                    ?>">
                     </div>
 
                     <button type="submit" name="submit" value="modifier">
@@ -98,7 +140,13 @@ unset($bd);
 
 <script>
     /* Le input password est focus, on peut voir le contenu.*/
-    var i=document.querySelector("input[type=password]");i.addEventListener("focusin",e=>{e.target.setAttribute("type","text");});i.addEventListener("focusout",e=>{e.target.setAttribute("type", "password");});
+    var i = document.querySelector("input[type=password]");
+    i.addEventListener("focusin", e => {
+        e.target.setAttribute("type", "text");
+    });
+    i.addEventListener("focusout", e => {
+        e.target.setAttribute("type", "password");
+    });
 </script>
 
 </html>
