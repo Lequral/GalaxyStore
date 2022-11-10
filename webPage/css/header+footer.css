@@ -33,7 +33,7 @@ header {
     position: absolute;
     top: 0;
     left: 0;
-    width: 99vw;
+    width: 100%;
     height: 85px;
     background-color: rgba(20, 17, 43,0.25);
     padding: 20px;
