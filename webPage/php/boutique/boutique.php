@@ -54,12 +54,12 @@
                         </h5>
                     </li>
                     <li>
-                        <h5>
+                        <h5 id="butSelected">
                             <a href="./../boutique/boutique.php">Boutique</a>
                         </h5>
                     </li>
                     <li>
-                        <h5 id="butSelected"><a href="./../identificationClient/connexion.php">Connexion</a></h5>
+                        <h5><a href="./../identificationClient/connexion.php">Connexion</a></h5>
                     </li>';
             }
             ?>

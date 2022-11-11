@@ -45,7 +45,7 @@
                 </li>';
             } else {
                 echo '<li>
-                        <h5>
+                        <h5 id="butSelected">>
                             <a href="./../../index.php">A propos de nous</a>
                         </h5>
                     </li>
@@ -55,7 +55,7 @@
                         </h5>
                     </li>
                     <li>
-                        <h5 id="butSelected"><a href="./php/identificationClient/connexion.php">Connexion</a></h5>
+                        <h5<a href="./php/identificationClient/connexion.php">Connexion</a></h5>
                     </li>';
             }
             ?>

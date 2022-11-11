@@ -2,7 +2,7 @@
 
 <?php 
     
-    SELECT * FROM planete WHERE idP=$_POST["id"]      
+    $sql = 'SELECT * FROM Planete WHERE idP=$_POST["id"]';
     echo '<a src="../statique/image/P'.$id.'.png"></a>';
 
 	?>
