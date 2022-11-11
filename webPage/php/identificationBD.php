@@ -14,5 +14,5 @@
     } catch(Exception $e) {
         die("Connexion à la base de donnée impossible !");
     }
-
+    
 ?>
