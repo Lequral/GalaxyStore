@@ -1,13 +1,10 @@
-
-
 <?php 
     
-    $sql = 'SELECT * FROM Planete WHERE idP=$_POST["id"]';
+    $id=$_POST["id"];
+    $sql = 'SELECT * FROM Planete WHERE id=$_POST["id"]';
     echo '<a src="../statique/image/P'.$id.'.png"></a>';
 
 	?>
-
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,6 +17,16 @@
 
 <body>
 
+	<div>
+		nom
+		masse
+		surface
+		température
+
+	</div>
+
+
+	
    
 
 </body>
