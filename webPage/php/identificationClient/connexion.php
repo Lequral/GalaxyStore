@@ -63,9 +63,15 @@ echo "<!--connecte = " . $connecte . "-->";
     <header>
         <h3>GALAXY STORE</h3>
         <ul class="button">
-            <h5><a href="./../../index.php">A propos de nous</a></h5>
-            <h5><a href="./../boutique/boutique.php">Boutique</a></h5>
-            <h5 id="butSelected"><a href="./connexion.php">Connexion</a></h5>
+            <li>
+                <h5><a href="./../../index.php">A propos de nous</a></h5>
+            </li>
+            <li>
+                <h5><a href="./../boutique/boutique.php">Boutique</a></h5>
+            </li>
+            <li>
+                <h5 id="butSelected"><a href="./connexion.php">Connexion</a></h5>
+            </li>
         </ul>
     </header>
 
