@@ -86,7 +86,6 @@
                         <button id="1">
                             <img src="../statique/image/P1.png" >
                         </button>
-
                     </form>
                     
                 </div>
@@ -97,6 +96,8 @@
                             <img src="../statique/image/P2.png" >
                         </button>
                     </form>
+                    
+                </div>
                 
                 <div class="case">
                     <form action="./boutique2.php" method="POST">
@@ -104,6 +105,7 @@
                             <img src="../statique/image/P3.png" >
                         </button>
                     </form>
+                    
                 </div>
                 
                 <div class="case">
@@ -112,6 +114,7 @@
                             <img src="../statique/image/P4.png" >
                         </button>
                     </form>
+                    
                 </div>
                 
                 <div class="case">
@@ -120,6 +123,7 @@
                             <img src="../statique/image/P5.png" >
                         </button>
                     </form>
+                    
                 </div>
                 
                 <div class="case">
@@ -128,6 +132,7 @@
                             <img src="../statique/image/P6.png" >
                         </button>
                     </form>
+                    
                 </div>
                 
                 <div class="case">
@@ -136,6 +141,7 @@
                             <img src="../statique/image/P7.png" >
                         </button>
                     </form>
+                    
                 </div>
                 
                 <div class="case">
@@ -144,6 +150,7 @@
                             <img src="../statique/image/P8.png" >
                         </button>
                     </form>
+                    
                 </div>
                 
                 <div class="case">
@@ -152,6 +159,7 @@
                             <img src="../statique/image/P9.png" >
                         </button>
                     </form>
+                   
                 </div>
                 
                 <div class="case">
@@ -160,6 +168,7 @@
                             <img src="../statique/image/P10.png" >
                         </button>
                     </form>
+                    
                 </div>
                 
                 <div class="case">
@@ -168,6 +177,7 @@
                             <img src="../statique/image/P11.png" >
                         </button>
                     </form>
+                    
                 </div>
                 
                 <div class="case">
@@ -176,6 +186,7 @@
                             <img src="../statique/image/P12.png" >
                         </button>
                     </form>
+                    
                 </div>
                 
                 <div class="case">
@@ -184,6 +195,7 @@
                             <img src="../statique/image/P13.png" >
                         </button>
                     </form>
+                    
                 </div>
                 
                 <div class="case">
@@ -192,6 +204,7 @@
                             <img src="../statique/image/P14.png" >
                         </button>
                     </form>
+                
                 </div>
                 
                 <div class="case">
@@ -200,6 +213,7 @@
                             <img src="../statique/image/P15.png" >
                         </button>
                     </form>
+                    
                 </div>
             </div>
         </div>
