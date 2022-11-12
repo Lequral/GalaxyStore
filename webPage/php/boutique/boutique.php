@@ -81,50 +81,57 @@
         <div class="scroll" id="scrollP">
             <div id="allCasesP">
                 
-                <div class="case" id="1">
+                <div class="case">
+                    <form action="./boutique2.php" method="POST">
+                        <button id="1">
+                            <img src="../statique/image/P1.png" >
+                        </button>
+
+                    </form>
                     
                 </div>
                 
-                <div class="case" id="2">
+                <div class="case">
+
                 </div>
                 
-                <div class="case" id="3">
+                <div class="case">
                 </div>
                 
-                <div class="case" id="4">
+                <div class="case">
                 </div>
                 
-                <div class="case" id="5">
+                <div class="case">
                 </div>
                 
-                <div class="case" id="6">
+                <div class="case">
                 </div>
                 
-                <div class="case" id="7">
+                <div class="case">
                 </div>
                 
-                <div class="case" id="8">
+                <div class="case">
                 </div>
                 
-                <div class="case" id="9">
+                <div class="case">
                 </div>
                 
-                <div class="case" id="10">
+                <div class="case">
                 </div>
                 
-                <div class="case" id="11">
+                <div class="case">
                 </div>
                 
-                <div class="case" id="12">
+                <div class="case">
                 </div>
                 
-                <div class="case" id="13">
+                <div class="case">
                 </div>
                 
-                <div class="case" id="14">
+                <div class="case">
                 </div>
                 
-                <div class="case" id="15">
+                <div class="case">
                 </div>
             </div>
         </div>
