@@ -5,15 +5,21 @@ $sql = "SELECT idPl, nomPl, idCl FROM planete;";
 
 $sqlE = "SELECT idEt, nomEt FROM etoile;";
 
+$sqlPartager = "SELECT idEt, 100-SUM(prct) FROM partager GROUP BY idEt;";
+
 
 $resultats = $bd->query($sql); /* la fonction query() est spécifique au SELECT sinon pour UPDATE, DELETE... c'est exec() */
 
 $resultatsE = $bd->query($sqlE);
 
+$resultatsPartager = $bd->query($sqlPartager);
+
 $planetes = $resultats->fetchAll(PDO::FETCH_OBJ);
 /*print_r($planete);*/
 
 $etoiles = $resultatsE->fetchAll(PDO::FETCH_OBJ);
+
+$partager =$resultatsPartager->fetchAll(PDO::FETCH_OBJ);
 
 unset($bd); /* déconnexion de la BD */
 ?>
