@@ -37,11 +37,12 @@ unset($bd);
 <body>
     <header>
         <h3>GALAXY STORE</h3>
-        <ul class="button">
+        <!--<ul class="button">
+
             <h5><a href="./../../index.php">A propos de nous</a></h5>
             <h5><a href="./../boutique/boutique.php">Boutique</a></h5>
             <h5 id="butSelected"><a href="./compte.php">Mon compte</a></h5>
-        </ul>
+        </ul>-->
     </header>
 
     <main>
