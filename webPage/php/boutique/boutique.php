@@ -94,7 +94,7 @@ unset($bd); /* déconnexion de la BD */
 
             <!--template de case
             <div class="case">
-                <form action="./boutique2.php" class="noStyle" method="POST">
+                <form action="./article.php" class="noStyle" method="POST">
                     <button class="likeA" style="background-image: url(./../../statique/image/P1.png);">
                         <h4>Ando</h4>
                         <h6 class="tag">Vendu</h6>
@@ -116,7 +116,7 @@ unset($bd); /* déconnexion de la BD */
 
                 echo '
                     <div class="case">
-                        <form action="./boutique2.php" class="noStyle" method="POST">
+                        <form action="./article.php" class="noStyle" method="POST">
                             <button class="likeA" style="background-image: url(./../../statique/image/P'.$idPl.'.png);">
                                 <h4>'.$nomPl.'</h4>
                                 <h6 class="tag">'.$etat.'</h6>
