@@ -3,10 +3,17 @@ require_once("./../identificationBD.php");
 
 $sql = "SELECT idPl, nomPl, idCl FROM planete;";
 
+$sqlE = "SELECT idEt, nomEt, masseEt, energie, tempEt, distEt FROM etoile;";
+
+
 $resultats = $bd->query($sql); /* la fonction query() est spécifique au SELECT sinon pour UPDATE, DELETE... c'est exec() */
+
+$resultatsE = $bd->query($sqlE);
 
 $planetes = $resultats->fetchAll(PDO::FETCH_OBJ);
 /*print_r($planete);*/
+
+$etoiles = $resultatsE->fetchAll(PDO::FETCH_OBJ);
 
 
 // refaire la mm pour les étoiles (pas exactement la mm requête SQL)
@@ -136,104 +143,33 @@ unset($bd); /* déconnexion de la BD */
 
         <div class="scroll" id="scrollE">
             <div id="allCasesE">
-                <a href="./article.php">
+
+            <?php
+            foreach ($etoiles as $e) {
+                $idEt = $e->idEt;
+                $nomEt = $e->nomEt;
+                    
+                if(isset($e->idCl)) {
+                    $etat = "Vendu";
+                }else {
+                    $etat = "Libre";
+                }
+
+                echo '
                     <div class="case">
-                        <h4>Anza</h4>
-                        <img href="../statique/image/P.php?id=nombre">
-                    </div>  
-                </a>
-                <a href="./article.php">
-                    <div class="case">
-                        <h4>Ardos</h4>
-                        <img href="../statique/image/P.php?id=nombre">
-                    </div>  
-                </a>
-                <a href="./article.php">
-                    <div class="case">
-                        <h4>Corell</h4>
-                        <img href="../statique/image/P.php?id=nombre">
-                    </div>  
-                </a>
-                <a href="./article.php">
-                    <div class="case">
-                        <h4>Garnib</h4>
-                        <img href="../statique/image/P.php?id=nombre">
-                    </div>  
-                </a>
-                <a href="./article.php">
-                    <div class="case">
-                        <h4>Kessa</h4>
-                        <img href="../statique/image/P.php?id=nombre">
-                    </div>  
-                </a>
-                <a href="./article.php">
-                    <div class="case">
-                        <h4>Ropagi</h4>
-                        <img href="../statique/image/P.php?id=nombre">
-                    </div>  
-                </a>
-                <a href="./article.php">
-                    <div class="case">
-                        <h4>Sokor</h4>
-                        <img href="../statique/image/P.php?id=nombre">
-                    </div>  
-                </a>
-                <a href="./article.php">
-                    <div class="case">
-                        <h4>Yavin</h4>
-                        <img href="../statique/image/P.php?id=nombre">
-                    </div>  
-                </a>
-                <a href="./article.php">
-                    <div class="case">
-                        <h4>Adhara</h4>
-                        <img href="../statique/image/P.php?id=nombre">
-                    </div>  
-                </a>
-                <a href="./article.php">
-                    <div class="case">
-                        <h4>Alya</h4>
-                        <img href="../statique/image/P.php?id=nombre">
-                    </div>  
-                </a>
-                <a href="./article.php">
-                    <div class="case">
-                        <h4>Izar</h4>
-                        <img href="../statique/image/P.php?id=nombre">
-                    </div>  
-                </a>
-                <a href="./article.php">
-                    <div class="case">
-                        <h4>Nashira</h4>
-                        <img href="../statique/image/P.php?id=nombre">
-                    </div>  
-                </a>
-                <a href="./article.php">
-                    <div class="case">
-                        <h4>Ogma</h4>
-                        <img href="../statique/image/P.php?id=nombre">
-                    </div>  
-                </a>
-                <a href="./article.php">
-                    <div class="case">
-                        <h4>Polaris</h4>
-                        <img href="../statique/image/P.php?id=nombre">
-                    </div>  
-                </a>
-                <a href="./article.php">
-                    <div class="case">
-                        <h4>Soleil</h4>
-                        <img href="../statique/image/P.php?id=nombre">
-                    </div>  
-                </a>
+                        <form action="./article.php" class="noStyle" method="POST">
+                            <button  class="likeA">
+                                <h4>'.$nomEt.'</h4>
+                                <h6 class="tag">'.$etat.'</h6>
+                            </button> 
+                        </form>
+                    </div>';
+            }
+            ?>
+                
             </div>
         </div>
 
-        
-        
-
-        
-    
 
     </main>
 
