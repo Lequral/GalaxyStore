@@ -22,6 +22,8 @@ h4 {
 
 	grid-row-start: 1;
 	grid-row-end: 1;
+	
+	text-transform: capitalize;
 }
 
 
@@ -92,9 +94,11 @@ h4 {
 }
 
 .tag {
-	background-color: black; /*mettre la bonne couleur de figma*/
 	text-transform: capitalize;
 	padding: 1px 0;
+}
+.tag.noir {
+	background-color: #0F101D;
 }
 
 #scrollP {

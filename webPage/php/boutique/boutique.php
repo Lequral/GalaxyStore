@@ -83,7 +83,7 @@ unset($bd); /* déconnexion de la BD */
     </header>
 
     <main>
-        <h1 id="boutique">BOUTIQUE</h1>
+        <h1 id="boutique">Boutique</h1>
         
         <div id="planete">
             <h2>Planètes</h2>
@@ -110,8 +110,10 @@ unset($bd); /* déconnexion de la BD */
                 
                 if(isset($p->idCl)) {
                     $etat = "Vendu";
+                    $tag = " noir";
                 }else {
-                    $etat = "Libre";
+                    $etat = "Disponible";
+                    $tag = "";
                 }
 
                 echo '
@@ -119,7 +121,7 @@ unset($bd); /* déconnexion de la BD */
                         <form action="./article.php" class="noStyle" method="POST">
                             <button class="likeA" style="background-image: url(./../../statique/image/P'.$idPl.'.png);">
                                 <h4>'.$nomPl.'</h4>
-                                <h6 class="tag">'.$etat.'</h6>
+                                <h6 class="tag'.$tag.'">'.$etat.'</h6>
                             </button> 
                         </form>
                     </div>';
