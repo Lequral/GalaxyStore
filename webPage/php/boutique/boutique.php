@@ -42,7 +42,7 @@ unset($bd); /* déconnexion de la BD */
             <h5 id="butSelected"><a href="./boutique.php">Boutique</a></h5>
             <h5><a href="./../identificationClient/connexion.php">Connexion</a></h5> -->
 
-            
+
             <?php
             if (isset($_POST) && isset($_POST["mail"]) && isset($_POST["mdp"])) { /*si connecté*/
                 echo '<li>
@@ -93,15 +93,15 @@ unset($bd); /* déconnexion de la BD */
 
     <main>
         <h1 id="boutique">Boutique</h1>
-        
+
         <div id="planete">
             <h2>Planètes</h2>
         </div>
-            
+
         <div class="scroll" id="scrollP">
             <div id="allCasesP">
 
-            <!--template de case
+                <!--template de case
             <div class="case">
                 <form action="./article.php" class="noStyle" method="POST">
                     <button class="likeA" style="background-image: url(./../../statique/image/P1.png);">
@@ -112,37 +112,45 @@ unset($bd); /* déconnexion de la BD */
             </div>
             -->
 
-            <?php
-            foreach ($planetes as $p) {
-                $idPl = $p->idPl;
-                $nomPl = $p->nomPl;
-                
-                if(isset($p->idCl)) {
-                    $etat = "Vendu";
-                    $tag = " noir";
-                }else {
-                    $etat = "Disponible";
-                    $tag = "";
-                }
+                <?php
+                foreach ($planetes as $p) {
+                    $idPl = $p->idPl;
+                    $nomPl = $p->nomPl;
 
-                echo '
+                    if (isset($p->idCl)) {
+                        $etat = "Vendu";
+                        $tag = " noir";
+                    } else {
+                        $etat = "Disponible";
+                        $tag = "";
+                    }
+
+                    if (isset($_POST) && isset($_POST["mail"]) && isset($_POST["mdp"])) {
+                        $inputConnexion = '<input class="hidden" type="text" name="mail" id="mail" value="' . $_POST["mail"] . '">
+                                            <input class="hidden" type="text" name="mdp" id="mdp" value="' . $_POST["mdp"] . '">';
+                    }else {
+                        $inputConnexion = null;
+                    }
+
+                    echo '
                     <div class="case">
                         <form action="./article.php" class="noStyle" method="POST">
-                            <input style="display:none;" type="number" name="id" id="id" value="'.$idPl.'">
+                            <input style="display:none;" type="number" name="id" id="id" value="' . $idPl . '">
                             <input style="display:none;" type="text" name="type" id="type" value="planete">
-                            <button class="likeA" style="background-image: url(./../../statique/image/P'.$idPl.'.png);"">
-                                <h4>'.$nomPl.'</h4>
-                                <h6 class="tag'.$tag.'">'.$etat.'</h6>
+                            '.$inputConnexion.'
+                            <button class="likeA" style="background-image: url(./../../statique/image/P' . $idPl . '.png);"">
+                                <h4>' . $nomPl . '</h4>
+                                <h6 class="tag' . $tag . '">' . $etat . '</h6>
                             </button> 
                         </form>
                     </div>';
-            }
-            ?>
+                }
+                ?>
 
             </div>
         </div>
-            
-         
+
+
         <div id="etoile">
             <h2>Etoiles</h2>
         </div>
@@ -150,27 +158,35 @@ unset($bd); /* déconnexion de la BD */
         <div class="scroll" id="scrollE">
             <div id="allCasesE">
 
-            <?php
-            foreach ($etoiles as $key => $e) {
-                $idEt = $e->idEt;
-                $nomEt = $e->nomEt;
-                    
-                $prct = get_object_vars($pourcentDispo[$key])["prctDispo"];
+                <?php
+                foreach ($etoiles as $key => $e) {
+                    $idEt = $e->idEt;
+                    $nomEt = $e->nomEt;
 
-                echo '
+                    $prct = get_object_vars($pourcentDispo[$key])["prctDispo"];
+
+                    if (isset($_POST) && isset($_POST["mail"]) && isset($_POST["mdp"])) {
+                        $inputConnexion = '<input class="hidden" type="text" name="mail" id="mail" value="' . $_POST["mail"] . '">
+                                            <input class="hidden" type="text" name="mdp" id="mdp" value="' . $_POST["mdp"] . '">';
+                    }else {
+                        $inputConnexion = null;
+                    }
+
+                    echo '
                     <div class="case">
                         <form action="./article.php" class="noStyle" method="POST">
-                            <input style="display:none;" type="number" name="id" id="id" value="'.$idEt.'">
+                            <input style="display:none;" type="number" name="id" id="id" value="' . $idEt . '">
                             <input style="display:none;" type="text" name="type" id="type" value="etoile">
+                            '.$inputConnexion.'
                             <button  class="likeA" style="background-image: url(./../../statique/image/!.png);">
-                                <h4>'.$nomEt.'</h4>
-                                <h6 class="tag">'.$prct.'% Dispo.</h6>
+                                <h4>' . $nomEt . '</h4>
+                                <h6 class="tag">' . $prct . '% Dispo.</h6>
                             </button> 
                         </form>
                     </div>';
-            }
-            ?>
-                
+                }
+                ?>
+
             </div>
         </div>
 
@@ -180,5 +196,5 @@ unset($bd); /* déconnexion de la BD */
     <footer></footer>
 
 </body>
-    
+
 </html>

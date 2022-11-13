@@ -17,12 +17,11 @@ $info = get_object_vars($resultats->fetchAll(PDO::FETCH_OBJ)[0]);
 $pourcentDispo = get_object_vars($resultatsPartager->fetchAll(PDO::FETCH_OBJ)[0])["prctDispo"];
 
 if (isset($_POST) && isset($_POST["mail"]) && isset($_POST["mdp"])) {
-	$sqlU = 'SELECT idCl FROM client WHERE mail=' . $_POST["mail"] . ' AND mdp=' . $_POST["mdp"];
-	$resultU = $bd->query($sql);
+	$sqlU = 'SELECT idCl FROM client WHERE mail="' . $_POST["mail"] . '" AND mdp="' . $_POST["mdp"].'";';
 
-	$idU = $resultU->fetchAll(PDO::FETCH_OBJ);
+	$resultU = $bd->query($sqlU);
 
-	echo "idCl = " . $idU;
+	$idU = get_object_vars($resultU->fetchAll(PDO::FETCH_OBJ)[0])["idCl"];
 }
 
 unset($bd);
