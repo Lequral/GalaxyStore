@@ -6,10 +6,15 @@ if ($_POST["type"] == "planete") {
 } elseif ($_POST["type"] == "etoile") {
 	$sql = "SELECT * FROM etoile WHERE idEt=" . $_POST["id"] . ";";
 }
+$sqlPartager = 'SELECT idEt, 100-SUM(prct) AS "prctDispo" FROM partager WHERE idEt='.$_POST["id"].' GROUP BY idEt;';
 
 $resultats = $bd->query($sql);
 
+$resultatsPartager = $bd->query($sqlPartager);
+
 $info = get_object_vars($resultats->fetchAll(PDO::FETCH_OBJ)[0]);
+
+$pourcentDispo = get_object_vars($resultatsPartager->fetchAll(PDO::FETCH_OBJ)[0])["prctDispo"];
 
 if (isset($_POST) && isset($_POST["mail"]) && isset($_POST["mdp"])) {
 	$sqlU = 'SELECT idCl FROM client WHERE mail=' . $_POST["mail"] . ' AND mdp=' . $_POST["mdp"];
@@ -103,9 +108,9 @@ unset($bd);
 					} else {
 						echo '<h2>Disponible</h2>';
 					}
-				} elseif ($_POST["type"] == "etoile") {
 
-					echo '<h2>Disponible</h2>';
+				} elseif ($_POST["type"] == "etoile") {
+					echo '<h2>'.$pourcentDispo.'% Disponible</h2>';
 				} ?>
 			</div>
 			<p>
@@ -115,7 +120,12 @@ unset($bd);
 					Surface = ' . pow(10, $info["surf"]) . ' Km²<br>
 					Température moyennne de surface = ' . $info["tempPl"] . ' °C<br>
 					Distance par rapport à la Terre = ' . pow(10, $info["distPl"]) . 'UA';
+				
 				} elseif ($_POST["type"] == "etoile") {
+					echo 'Masse = ' . pow(10, $info["masseEt"]) . ' Kg<br>
+					Surface = ' . pow(10, $info["energie"]) . ' J<br>
+					Température moyennne de surface = ' . $info["tempEt"] . ' °C<br>
+					Distance par rapport à la Terre = ' . pow(10, $info["distEt"]) . 'UA';
 				}
 				?>
 			</p>

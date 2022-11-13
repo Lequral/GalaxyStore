@@ -5,7 +5,7 @@ $sql = "SELECT idPl, nomPl, idCl FROM planete;";
 
 $sqlE = "SELECT idEt, nomEt FROM etoile;";
 
-$sqlPartager = "SELECT idEt, 100-SUM(prct) FROM partager GROUP BY idEt;";
+$sqlPartager = 'SELECT idEt, 100-SUM(prct) AS "prctDispo" FROM partager GROUP BY idEt;';
 
 
 $resultats = $bd->query($sql); /* la fonction query() est spécifique au SELECT sinon pour UPDATE, DELETE... c'est exec() */
@@ -19,7 +19,7 @@ $planetes = $resultats->fetchAll(PDO::FETCH_OBJ);
 
 $etoiles = $resultatsE->fetchAll(PDO::FETCH_OBJ);
 
-$partager =$resultatsPartager->fetchAll(PDO::FETCH_OBJ);
+$pourcentDispo = $resultatsPartager->fetchAll(PDO::FETCH_OBJ);
 
 unset($bd); /* déconnexion de la BD */
 ?>
@@ -151,15 +151,11 @@ unset($bd); /* déconnexion de la BD */
             <div id="allCasesE">
 
             <?php
-            foreach ($etoiles as $e) {
+            foreach ($etoiles as $key => $e) {
                 $idEt = $e->idEt;
                 $nomEt = $e->nomEt;
                     
-                if(isset($e->idCl)) {
-                    $etat = "Vendu";
-                }else {
-                    $etat = "Libre";
-                }
+                $prct = get_object_vars($pourcentDispo[$key])["prctDispo"];
 
                 echo '
                     <div class="case">
@@ -168,7 +164,7 @@ unset($bd); /* déconnexion de la BD */
                             <input style="display:none;" type="text" name="type" id="type" value="etoile">
                             <button  class="likeA" style="background-image: url(./../../statique/image/!.png);">
                                 <h4>'.$nomEt.'</h4>
-                                <h6 class="tag">'.$etat.'</h6>
+                                <h6 class="tag">'.$prct.'% Dispo.</h6>
                             </button> 
                         </form>
                     </div>';
