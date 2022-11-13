@@ -9,10 +9,11 @@
     );
 
     try {
-        $bd = new PDO("mysql:host=$host;dbname=$bdName;",
-            $user, $pass, $option); 
-    } catch(Exception $e) {
-        die("Connexion à la base de donnée impossible !");
+        $bd = new PDO('mysql:dbname='.$bdName.';host='.$host,
+        $user, $pass, $option);
+        /*echo "Connected to ".$bdName." at ".$host." successfully !";*/
+    } catch(PDOException $pe) {
+        die("Connexion à la base de donnée impossible :".$pe->getMessage());
     }
     
 ?>
