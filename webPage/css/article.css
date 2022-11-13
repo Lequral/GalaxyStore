@@ -2,13 +2,22 @@ body {
 	background-image: url(../statique/image/EtoilesBg.png), linear-gradient(-45deg, rgba(24, 72, 125, 0.5), rgba(15, 16, 29, 0.2), rgba(33, 20, 57, 0.5));
 }
 
-#planete h2:not(.noir) {
+#planete h2.etoile {
 	display: none;
 }
 
-#etoile h2.noir {
+#etoile h2.planete {
 	display: none;
 }
+
+#planete button.prct {
+	display: none;
+}
+
+#etoile button:not(.prct) {
+	display: none;
+}
+
 
 main {
 	grid-area: 2 / span 5 / 2 / 13;
@@ -29,6 +38,8 @@ h1 {
 
 .attribut h2 {
 	color: #C6C6C6;
+	position: relative;
+	top: -10px;
 }
 
 h2:not(.noir) {
@@ -46,12 +57,66 @@ h2:not(.noir) {
 	text-align: center;
 	text-transform: capitalize !important;
 }
-  
+
 p {
 	grid-area: 3 / 1 / 3 / span 5;
 }
-  
+
 .boutons {
 	grid-area: 4 / 1 / 4 / span 5;
+	gap: 15px;
+	display: flex;
+	justify-content: end;
 }
-  
+
+button:focus {
+	border: #C6C6C6 2px solid;
+}
+
+button:hover h4 {
+	/* border: #C6C6C6 2px solid; */
+	opacity: 50%;
+}
+
+.acheter {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	height: 50px;
+	width: 165px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.vendre {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	height: 50px;
+	width: 165px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.bouton-main {
+	width: 100%;
+	height: 100%;
+	border-radius: 8px;
+	display: flex;
+	justify-content: center;
+	flex-flow: column nowrap;
+}
+
+.acheter .bouton-main {
+	color: #C6C6C6;
+	background-color: #0F101D;
+}
+
+.vendre .bouton-main {
+	color: #0F101D;
+	background-color: #C6C6C6;
+}
+
+.vendre h4 {
+	color: #0F101D;
+}

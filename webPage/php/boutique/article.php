@@ -17,13 +17,13 @@ echo '<a src="../statique/image/P' . $id . '.png"></a>';
 	<link rel="stylesheet" href="./../../css/article.css">
 </head>
 
-<body id="planete">
+<body id="<?php echo $_POST["type"]; ?>">
 	<header>
-        <h3>GALAXY STORE</h3>
-        <ul class="button">            
-            <?php
-            if (isset($_POST) && isset($_POST["mail"]) && isset($_POST["mdp"])) { /*si connecté*/
-                echo '<li>
+		<h3>GALAXY STORE</h3>
+		<ul class="button">
+			<?php
+			if (isset($_POST) && isset($_POST["mail"]) && isset($_POST["mdp"])) { /*si connecté*/
+				echo '<li>
                         <form action="./../../index.php" method="post" class="noStyle">
                             <input type="text" name="mail" value="' . $_POST["mail"] . '" class="hidden"></input>
                             <input type="password" name="mdp" value="' . $_POST["mdp"] . '" class="hidden"></input>
@@ -50,8 +50,8 @@ echo '<a src="../statique/image/P' . $id . '.png"></a>';
                             </button>
                         </form>
                     </li>';
-            } else {
-                echo '<li>
+			} else {
+				echo '<li>
                         <h5>
                             <a href="./../../index.php">A propos de nous</a>
                         </h5>
@@ -64,34 +64,46 @@ echo '<a src="../statique/image/P' . $id . '.png"></a>';
                     <li>
                         <h5><a href="./../identificationClient/connexion.php">Connexion</a></h5>
                     </li>';
-            }
-            ?>
-        </ul>
+			}
+			?>
+		</ul>
 	</header>
 
 	<main>
 		<h1>Nom de l'astre</h1>
-		<div class="attribut"><h2 class="noir">Vendu</h2><h2>80% Disponible</h2></div>
+		<div class="attribut">
+			<h2 class="noir planete">Vendu</h2>
+			<h2 class="etoile">80% Disponible</h2>
+		</div>
 		<p>
 			Description...
 			masse
 			taille
 			distance
 		</p>
-		<ul class="boutons">
-			<li class="acheter prct">
-				<div class="bouton-main">ACHETER</div>
-			</li>
-			<li class="vendre prct">
-				<div class="bouton-main">ACHETER</div>
-			</li>
-			<li class="acheter">
-				<div class="bouton-main">ACHETER</div>
-			</li>
-			<li class="vendre">
-				<div class="bouton-main">ACHETER</div>
-			</li>
-		</ul>
+
+		<div class="boutons">
+			<button class="acheter prct">
+				<div class="bouton-main">
+					<h4>ACHETER</h4>
+				</div>
+			</button>
+			<button class="vendre prct">
+				<div class="bouton-main">
+					<h4>VENDRE</h4>
+				</div>
+			</button>
+			<button class="acheter">
+				<div class="bouton-main">
+					<h4>ACHETER</h4>
+				</div>
+			</button>
+			<button class="vendre">
+				<div class="bouton-main">
+					<h4>VENDRE</h4>
+				</div>
+			</button>
+		</div>
 	</main>
 
 
