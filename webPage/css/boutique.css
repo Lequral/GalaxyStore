@@ -96,6 +96,7 @@ h4 {
 .tag {
 	text-transform: capitalize;
 	padding: 1px 0;
+	color: #C6C6C6;
 }
 .tag.noir {
 	background-color: #0F101D;

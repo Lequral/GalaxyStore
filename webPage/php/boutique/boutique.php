@@ -122,7 +122,9 @@ unset($bd); /* déconnexion de la BD */
                 echo '
                     <div class="case">
                         <form action="./article.php" class="noStyle" method="POST">
-                            <button class="likeA" style="background-image: url(./../../statique/image/P'.$idPl.'.png);">
+                            <input style="display:none;" type="number" name="id" id="id" value="'.$idPl.'">
+                            <input style="display:none;" type="text" name="type" id="type" value="planete">
+                            <button class="likeA" style="background-image: url(./../../statique/image/P'.$idPl.'.png);"">
                                 <h4>'.$nomPl.'</h4>
                                 <h6 class="tag'.$tag.'">'.$etat.'</h6>
                             </button> 
