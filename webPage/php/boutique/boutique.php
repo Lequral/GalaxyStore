@@ -80,16 +80,12 @@
             
         <div class="scroll" id="scrollP">
             <div id="allCasesP">
-                
-                <div class="case">
-                    <form action="./boutique2.php" method="POST">
+                <a href="./boutique2.php">
+                    <div class="case">
                         <h4>Agamar</h4>
-                        <button id="1">
-                            <img src="../statique/image/P1.png" >
-                        </button>
-                    </form>
-                    
-                </div>
+                        <img href="../statique/image/P.php?id=nombre">
+                    </div>  
+                </a>
                 
                 <div class="case">
                     <form action="./boutique2.php" method="POST">
@@ -248,36 +244,96 @@
 
         <div class="scroll" id="scrollE">
             <div id="allCasesE">
-                <div class="case"> 
-                </div>
-                <div class="case"> 
-                </div>
-                <div class="case"> 
-                </div>
-                <div class="case"> 
-                </div>
-                <div class="case"> 
-                </div>
-                <div class="case"> 
-                </div>
-                <div class="case"> 
-                </div>
-                <div class="case"> 
-                </div>
-                <div class="case"> 
-                </div>
-                <div class="case"> 
-                </div>
-                <div class="case"> 
-                </div>
-                <div class="case"> 
-                </div>
-                <div class="case"> 
-                </div>
-                <div class="case"> 
-                </div>
-                <div class="case"> 
-                </div>
+                <a href="./boutique2.php">
+                    <div class="case">
+                        <h4>Anza</h4>
+                        <img href="../statique/image/P.php?id=nombre">
+                    </div>  
+                </a>
+                <a href="./boutique2.php">
+                    <div class="case">
+                        <h4>Ardos</h4>
+                        <img href="../statique/image/P.php?id=nombre">
+                    </div>  
+                </a>
+                <a href="./boutique2.php">
+                    <div class="case">
+                        <h4>Corell</h4>
+                        <img href="../statique/image/P.php?id=nombre">
+                    </div>  
+                </a>
+                <a href="./boutique2.php">
+                    <div class="case">
+                        <h4>Garnib</h4>
+                        <img href="../statique/image/P.php?id=nombre">
+                    </div>  
+                </a>
+                <a href="./boutique2.php">
+                    <div class="case">
+                        <h4>Kessa</h4>
+                        <img href="../statique/image/P.php?id=nombre">
+                    </div>  
+                </a>
+                <a href="./boutique2.php">
+                    <div class="case">
+                        <h4>Ropagi</h4>
+                        <img href="../statique/image/P.php?id=nombre">
+                    </div>  
+                </a>
+                <a href="./boutique2.php">
+                    <div class="case">
+                        <h4>Sokor</h4>
+                        <img href="../statique/image/P.php?id=nombre">
+                    </div>  
+                </a>
+                <a href="./boutique2.php">
+                    <div class="case">
+                        <h4>Yavin</h4>
+                        <img href="../statique/image/P.php?id=nombre">
+                    </div>  
+                </a>
+                <a href="./boutique2.php">
+                    <div class="case">
+                        <h4>Adhara</h4>
+                        <img href="../statique/image/P.php?id=nombre">
+                    </div>  
+                </a>
+                <a href="./boutique2.php">
+                    <div class="case">
+                        <h4>Alya</h4>
+                        <img href="../statique/image/P.php?id=nombre">
+                    </div>  
+                </a>
+                <a href="./boutique2.php">
+                    <div class="case">
+                        <h4>Izar</h4>
+                        <img href="../statique/image/P.php?id=nombre">
+                    </div>  
+                </a>
+                <a href="./boutique2.php">
+                    <div class="case">
+                        <h4>Nashira</h4>
+                        <img href="../statique/image/P.php?id=nombre">
+                    </div>  
+                </a>
+                <a href="./boutique2.php">
+                    <div class="case">
+                        <h4>Ogma</h4>
+                        <img href="../statique/image/P.php?id=nombre">
+                    </div>  
+                </a>
+                <a href="./boutique2.php">
+                    <div class="case">
+                        <h4>Polaris</h4>
+                        <img href="../statique/image/P.php?id=nombre">
+                    </div>  
+                </a>
+                <a href="./boutique2.php">
+                    <div class="case">
+                        <h4>Soleil</h4>
+                        <img href="../statique/image/P.php?id=nombre">
+                    </div>  
+                </a>
             </div>
         </div>
 
