@@ -1,26 +1,26 @@
 <?php
 require_once("./../identificationBD.php");
 
-$sql = "SELECT * FROM planete;";
+if ($_POST["type"] == "planete") {
+	$sql = "SELECT * FROM planete WHERE idPl=" . $_POST["id"] . ";";
+} elseif ($_POST["type"] == "etoile") {
+	$sql = "SELECT * FROM etoile WHERE idEt=" . $_POST["id"] . ";";
+}
 
-$sqlE = "SELECT * FROM etoile;";
+$resultats = $bd->query($sql);
 
+$info = get_object_vars($resultats->fetchAll(PDO::FETCH_OBJ)[0]);
 
-$resultats = $bd->query($sql); 
+if (isset($_POST) && isset($_POST["mail"]) && isset($_POST["mdp"])) {
+	$sqlU = 'SELECT idCl FROM client WHERE mail=' . $_POST["mail"] . ' AND mdp=' . $_POST["mdp"];
+	$resultU = $bd->query($sql);
 
-$resultatsE = $bd->query($sqlE);
+	$idU = $resultU->fetchAll(PDO::FETCH_OBJ);
 
-$planetes = $resultats->fetchAll(PDO::FETCH_OBJ);
+	echo "idCl = " . $idU;
+}
 
-
-$etoiles = $resultatsE->fetchAll(PDO::FETCH_OBJ);
-
-unset($bd); 
-
-$id = $_POST["id"];
-$sql = 'SELECT * FROM Planete WHERE id=$_POST["id"]';
-echo '<a src="../statique/image/P' . $id . '.png"></a>';
-
+unset($bd);
 ?>
 
 <!DOCTYPE html>
@@ -87,20 +87,42 @@ echo '<a src="../statique/image/P' . $id . '.png"></a>';
 	</header>
 
 	<main>
-		<h1>Nom de l'astre</h1>
-		<div class="attribut">
-			<h2 class="noir planete">Vendu</h2>
-			<h2 class="etoile">80% Disponible</h2>
+		<div id="content">
+			<h1><?php
+				if ($_POST["type"] == "planete") {
+					echo $info["nomPl"];
+				} elseif ($_POST["type"] == "etoile") {
+					echo $info["nomEt"];
+				}
+				?></h1>
+			<div class="attribut">
+				<?php
+				if ($_POST["type"] == "planete") {
+					if (isset($info["idCl"])) {
+						echo '<h2 class="noir">Vendu</h2>';
+					} else {
+						echo '<h2>Disponible</h2>';
+					}
+				} elseif ($_POST["type"] == "etoile") {
+
+					echo '<h2>Disponible</h2>';
+				} ?>
+			</div>
+			<p>
+				<?php
+				if ($_POST["type"] == "planete") {
+					echo 'Masse = ' . pow(10, $info["massPl"]) . ' Kg<br>
+					Surface = ' . pow(10, $info["surf"]) . ' Km²<br>
+					Température moyennne de surface = ' . $info["tempPl"] . ' °C<br>
+					Distance par rapport à la Terre = ' . pow(10, $info["distPl"]) . 'UA';
+				} elseif ($_POST["type"] == "etoile") {
+				}
+				?>
+			</p>
 		</div>
-		<p>
-			Description...
-			masse
-			taille
-			distance
-		</p>
 
 		<div class="boutons">
-			<button class="acheter prct">
+			<!-- <button class="acheter prct">
 				<div class="bouton-main">
 					<h4>ACHETER</h4>
 				</div>
@@ -109,17 +131,18 @@ echo '<a src="../statique/image/P' . $id . '.png"></a>';
 				<div class="bouton-main">
 					<h4>VENDRE</h4>
 				</div>
-			</button>
-			<button class="acheter">
-				<div class="bouton-main">
-					<h4>ACHETER</h4>
-				</div>
-			</button>
+			</button> -->
+			<!-- <button class="acheter">
+						<div class="bouton-main">
+							<h4>ACHETER</h4>
+						</div>
+					</button>
+
 			<button class="vendre">
 				<div class="bouton-main">
 					<h4>VENDRE</h4>
 				</div>
-			</button>
+			</button> -->
 		</div>
 	</main>
 

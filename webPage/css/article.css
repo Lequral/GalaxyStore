@@ -2,7 +2,7 @@ body {
 	background-image: url(../statique/image/EtoilesBg.png), linear-gradient(-45deg, rgba(24, 72, 125, 0.5), rgba(15, 16, 29, 0.2), rgba(33, 20, 57, 0.5));
 }
 
-#planete h2.etoile {
+/* #planete h2.etoile {
 	display: none;
 }
 
@@ -16,22 +16,21 @@ body {
 
 #etoile button:not(.prct) {
 	display: none;
-}
+} */
 
 
 main {
 	grid-area: 2 / span 5 / 2 / 13;
-	grid-template: 200px 50px 200px 50px / repeat(5, 75px);
+	grid-template: 1fr 1fr / repeat(5, 75px);
 	column-gap: 15px;
 	text-align: end;
 }
 
-h1 {
+#content {
 	grid-area: 1 / 1 / 1 / span 5;
 }
 
 .attribut {
-	grid-area: 2 / 1 / 2 / span 5;
 	display: flex;
 	justify-content: end;
 }
@@ -58,12 +57,8 @@ h2:not(.noir) {
 	text-transform: capitalize !important;
 }
 
-p {
-	grid-area: 3 / 1 / 3 / span 5;
-}
-
 .boutons {
-	grid-area: 4 / 1 / 4 / span 5;
+	grid-area: 2 / 1 / 2 / span 5;
 	gap: 15px;
 	display: flex;
 	justify-content: end;
