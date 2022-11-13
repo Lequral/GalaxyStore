@@ -14,7 +14,7 @@
     <title>Aperçu de la planète</title>
     <link rel="stylesheet" href="./../../css/police.css">
     <link rel="stylesheet" href="./../../css/header+footer.css">
-    <link rel="stylesheet" href="./../../css/boutique.css">
+    <link rel="stylesheet" href="./../../css/article.css">
 </head>
 
 <body>

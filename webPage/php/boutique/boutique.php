@@ -3,7 +3,7 @@ require_once("./../identificationBD.php");
 
 $sql = "SELECT idPl, nomPl, idCl FROM planete;";
 
-$sqlE = "SELECT idEt, nomEt, masseEt, energie, tempEt, distEt FROM etoile;";
+$sqlE = "SELECT idEt, nomEt FROM etoile;";
 
 
 $resultats = $bd->query($sql); /* la fonction query() est spécifique au SELECT sinon pour UPDATE, DELETE... c'est exec() */
@@ -14,10 +14,6 @@ $planetes = $resultats->fetchAll(PDO::FETCH_OBJ);
 /*print_r($planete);*/
 
 $etoiles = $resultatsE->fetchAll(PDO::FETCH_OBJ);
-
-
-// refaire la mm pour les étoiles (pas exactement la mm requête SQL)
-
 
 unset($bd); /* déconnexion de la BD */
 ?>
