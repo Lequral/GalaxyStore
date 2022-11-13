@@ -17,16 +17,18 @@
 
 <body>
 
-	<div>
-		nom
-		masse
-		surface
-		température
+	<main>
+		<div>
+			nom
+			masse
+			surface
+			température
 
-	</div>
+		</div>
 
 
-	
+	</main>
+
    
 
 </body>
