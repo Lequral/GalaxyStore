@@ -1,3 +1,19 @@
+<?php
+require_once("./../identificationBD.php");
+
+$sql = "SELECT idPl, nomPl, idCl FROM planete;";
+
+$resultats = $bd->query($sql); /* la fonction query() est spécifique au SELECT sinon pour UPDATE, DELETE... c'est exec() */
+
+$planetes = $resultats->fetchAll(PDO::FETCH_OBJ);
+/*print_r($planete);*/
+
+
+// refaire la mm pour les étoiles (pas exactement la mm requête SQL)
+
+
+unset($bd); /* déconnexion de la BD */
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -66,178 +82,50 @@
         </ul>
     </header>
 
-    
-  
-
-
     <main>
         <h1 id="boutique">BOUTIQUE</h1>
         
-         <!-- ici le div est pas nécessaire vu que tu as qu'un élément dedans, après tu peux regrouper le titre avec les cases stv mais c'est pas obligé. -->
         <div id="planete">
             <h2>Planètes</h2>
         </div>
             
         <div class="scroll" id="scrollP">
             <div id="allCasesP">
-                <div class="case">
-                    <form action="./boutique2.php" method="POST">
-                        <h4>Ando</h4>
-                        <button id="1">
-                            <img src="../../statique/image/P1.png" width="100%">
-                        </button>
-                            
-                    </form>
-                    
-                </div>
-                
-                <div class="case">
-                    <form action="./boutique2.php" method="POST">
-                        <h4>Ando</h4>
-                        <button id="2">
-                            <img src="../../statique/image/P2.png" width="100%">
-                        </button>
-                            
-                    </form>
-                    
-                </div>
-                
-                <div class="case">
-                    <form action="./boutique2.php" method="POST">
-                        <h4>Bracca</h4>
-                        <button id="3">
-                            <img src="../../statique/image/P3.png" width="90%">
-                        </button>
-                        
-                    </form>
-                    
-                </div>
-                
-                <div class="case">
-                    <form action="./boutique2.php" method="POST">
-                        <h4>Chandrila</h4>
-                        <button id="4">
-                            <img src="../../statique/image/P4.png" width="100%">
-                        </button>
-                        
-                    </form>
-                    
-                </div>
-                
-                <div class="case">
-                    <form action="./boutique2.php" method="POST">
-                        <h4>Corellia</h4>
-                        <button id="5">
-                            <img src="../../statique/image/P5.png" width="100%">
-                        </button>
-                        
-                    </form>
-                    
-                </div>
-                
-                <div class="case">
-                    <form action="./boutique2.php" method="POST">
-                        <h4>Dathomir</h4>
-                        <button id="6">
-                            <img src="../../statique/image/P6.png" width="100%">
-                        </button>
-                        
-                    </form>
-                    
-                </div>
-                
-                <div class="case">
-                    <form action="./boutique2.php" method="POST">
-                        <h4>Exegol</h4>
-                        <button id="7">
-                            <img src="../../statique/image/P7.png" width="100%">
-                        </button>
-                        
-                    </form>
-                    
-                </div>
-                
-                <div class="case">
-                    <form action="./boutique2.php" method="POST">
-                        <h4>Ilum</h4>
-                        <button id="8">
-                            <img src="../../statique/image/P8.png" width="100%" >
-                        </button>
-                        
-                    </form>
-                    
-                </div>
-                
-                <div class="case">
-                    <form action="./boutique2.php" method="POST">
-                        <h4>Kamino</h4>
-                        <button id="9">
-                            <img src="../../statique/image/P9.png" width="100%">
-                        </button>
 
-                    </form>
-                   
-                </div>
+            <!--template de case
+            <div class="case">
+                <form action="./boutique2.php" class="noStyle" method="POST">
+                    <button class="likeA" style="background-image: url(./../../statique/image/P1.png);">
+                        <h4>Ando</h4>
+                        <h6 class="tag">Vendu</h6>
+                    </button> 
+                </form>
+            </div>
+            -->
+
+            <?php
+            foreach ($planetes as $p) {
+                $idPl = $p->idPl;
+                $nomPl = $p->nomPl;
                 
-                <div class="case">
-                    <form action="./boutique2.php" method="POST">
-                        <h4>Kijimi</h4>
-                        <button id="10">
-                            <img src="../../statique/image/P10.png" width="100%" >
-                        </button>
-                    </form>
-                    
-                </div>
-                
-                <div class="case">
-                    <form action="./boutique2.php" method="POST">
-                        <h4>Malastare   </h4>
-                        <button id="11">
-                            <img src="../../statique/image/P11.png" width="100%">
-                        </button>
-                    </form>
-                    
-                </div>
-                
-                <div class="case">
-                    <form action="./boutique2.php" method="POST">
-                        <h4>Mimban  </h4>
-                        <button id="12">
-                            <img src="../../statique/image/P12.png" width="100%">
-                        </button>
-                    </form>
-                    
-                </div>
-                
-                <div class="case">
-                    <form action="./boutique2.php" method="POST">
-                        <h4>Onderon     </h4>
-                        <button id="13">
-                            <img src="../../statique/image/P13.png" width="100%">
-                        </button>
-                    </form>
-                    
-                </div>
-                
-                <div class="case">
-                    <form action="./boutique2.php" method="POST">
-                        <h4>Scarif</h4>
-                        <button id="14">
-                            <img src="../../statique/image/P14.png" width="100%">
-                        </button>
-                    </form>
-                
-                </div>
-                
-                <div class="case">
-                    <form action="./boutique2.php" method="POST">
-                        <h4>Teth</h4>
-                        <button id="15">
-                            <img src="../../statique/image/P15.png" width="100%" >
-                        </button>
-                    </form>
-                    
-                </div>
+                if(isset($p->idCl)) {
+                    $etat = "Vendu";
+                }else {
+                    $etat = "Libre";
+                }
+
+                echo '
+                    <div class="case">
+                        <form action="./boutique2.php" class="noStyle" method="POST">
+                            <button class="likeA" style="background-image: url(./../../statique/image/P'.$idPl.'.png);">
+                                <h4>'.$nomPl.'</h4>
+                                <h6 class="tag">'.$etat.'</h6>
+                            </button> 
+                        </form>
+                    </div>';
+            }
+            ?>
+
             </div>
         </div>
             
