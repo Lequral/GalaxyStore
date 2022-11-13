@@ -1,4 +1,21 @@
 <?php
+require_once("./../identificationBD.php");
+
+$sql = "SELECT * FROM planete;";
+
+$sqlE = "SELECT * FROM etoile;";
+
+
+$resultats = $bd->query($sql); 
+
+$resultatsE = $bd->query($sqlE);
+
+$planetes = $resultats->fetchAll(PDO::FETCH_OBJ);
+
+
+$etoiles = $resultatsE->fetchAll(PDO::FETCH_OBJ);
+
+unset($bd); 
 
 $id = $_POST["id"];
 $sql = 'SELECT * FROM Planete WHERE id=$_POST["id"]';
