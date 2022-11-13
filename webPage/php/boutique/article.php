@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Aperçu de la planète</title>
-    <link rel="stylesheet" href="./../../css/boutique2.css">
+    <link rel="stylesheet" href="./../../css/article.css">
 </head>
 
 <body>
