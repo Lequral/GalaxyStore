@@ -158,6 +158,8 @@ unset($bd); /* déconnexion de la BD */
                 echo '
                     <div class="case">
                         <form action="./article.php" class="noStyle" method="POST">
+                            <input style="display:none;" type="number" name="id" id="id" value="'.$idEt.'">
+                            <input style="display:none;" type="text" name="type" id="type" value="etoile">
                             <button  class="likeA" style="background-image: url(./../../statique/image/!.png);">
                                 <h4>'.$nomEt.'</h4>
                                 <h6 class="tag">'.$etat.'</h6>
