@@ -118,10 +118,10 @@ unset($bd); /* déconnexion de la BD */
 
                     if (isset($p->idCl)) {
                         $etat = "Vendu";
-                        $tag = "";
+                        // $tag = "noir";
                     } else {
                         $etat = "Disponible";
-                        $tag = "noir";
+                        // $tag = "noir";
                     }
 
                     if (isset($_POST) && isset($_POST["mail"]) && isset($_POST["mdp"])) {
@@ -139,7 +139,7 @@ unset($bd); /* déconnexion de la BD */
                             '.$inputConnexion.'
                             <button class="likeA" style="background-image: url(./../../statique/image/P' . $idPl . '.png);"">
                                 <h4>' . $nomPl . '</h4>
-                                <h6 class="tag ' . $tag . '">' . $etat . '</h6>
+                                <h6 class="tag noir">' . $etat . '</h6>
                             </button> 
                         </form>
                     </div>';
@@ -163,11 +163,11 @@ unset($bd); /* déconnexion de la BD */
                     $nomEt = $e->nomEt;
 
                     $prct = intval(get_object_vars($pourcentDispo[$key])["prctDispo"]);
-                    if($prct === 0) {
-                        $tag = "";
-                    }else {
-                        $tag = "noir";
-                    }
+                    // if(!$prct === 0) {
+                    //     $tag = "noir";
+                    // }else {
+                    //     $tag = "noir";
+                    // }
 
                     if (isset($_POST) && isset($_POST["mail"]) && isset($_POST["mdp"])) {
                         $inputConnexion = '<input class="hidden" type="text" name="mail" id="mail" value="' . $_POST["mail"] . '">
@@ -184,7 +184,7 @@ unset($bd); /* déconnexion de la BD */
                             '.$inputConnexion.'
                             <button  class="likeA" style="background-image: url(./../../statique/image/!.png);">
                                 <h4>' . $nomEt . '</h4>
-                                <h6 class="tag '.$tag.'">' . $prct . '% Dispo.</h6>
+                                <h6 class="tag noir">' . $prct . '% Dispo.</h6>
                             </button> 
                         </form>
                     </div>';
