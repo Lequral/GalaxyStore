@@ -15,7 +15,6 @@ $resultatsE = $bd->query($sqlE);
 $resultatsPartager = $bd->query($sqlPartager);
 
 $planetes = $resultats->fetchAll(PDO::FETCH_OBJ);
-/*print_r($planete);*/
 
 $etoiles = $resultatsE->fetchAll(PDO::FETCH_OBJ);
 
@@ -135,7 +134,7 @@ unset($bd); /* déconnexion de la BD */
                     echo '
                     <div class="case">
                         <form action="./article.php" class="noStyle" method="POST">
-                            <input style="display:none;" type="number" name="id" id="id" value="' . $idPl . '">
+                            <input style="display:none;" type="number" name="idAstre" id="idAstre" value="' . $idPl . '">
                             <input style="display:none;" type="text" name="type" id="type" value="planete">
                             '.$inputConnexion.'
                             <button class="likeA" style="background-image: url(./../../statique/image/P' . $idPl . '.png);"">
@@ -180,7 +179,7 @@ unset($bd); /* déconnexion de la BD */
                     echo '
                     <div class="case">
                         <form action="./article.php" class="noStyle" method="POST">
-                            <input style="display:none;" type="number" name="id" id="id" value="' . $idEt . '">
+                            <input style="display:none;" type="number" name="idAstre" id="idAstre" value="' . $idEt . '">
                             <input style="display:none;" type="text" name="type" id="type" value="etoile">
                             '.$inputConnexion.'
                             <button  class="likeA" style="background-image: url(./../../statique/image/!.png);">

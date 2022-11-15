@@ -54,12 +54,11 @@ h2:not(.noir) {
 }
 
 button:focus {
-	border: #C6C6C6 2px solid;
+	border: white 3px solid;
 }
 
 button:hover h4 {
-	/* border: #C6C6C6 2px solid; */
-	opacity: 50%;
+	opacity: 0.5; /* C #C6C6C6 mais avec l'opacité à 0.5 */
 }
 
 .acheter {
@@ -103,4 +102,10 @@ button:hover h4 {
 
 .vendre h4 {
 	color: #0F101D;
+}
+
+.btnDesactive {
+	pointer-events: none;
+	cursor: pointer;
+	opacity: 50%;
 }

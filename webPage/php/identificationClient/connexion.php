@@ -6,21 +6,17 @@ function tentativeConnexion()
         return [FALSE, FALSE, NULL];
     }
 
-    // echo "<!-- essai de co -->";
-
     if (is_null($_POST["mail"])) { /* mail est nul ?*/
         return [FALSE, FALSE, NULL];
     }
 
     $mail = $_POST["mail"];
-    // echo "<!-- " . "<br>mail est déf = " . $mail . "-->";
 
     if (is_null($_POST["mdp"])) { /* mdp est nul ?*/
         return [FALSE, FALSE, NULL];
     }
 
     $mdp = $_POST["mdp"];
-    // echo "<!-- " . "<br>mdp est déf = " . $mdp . "-->";
 
     require_once("./../identificationBD.php");
 

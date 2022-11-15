@@ -66,13 +66,8 @@
     <main>
         <h1>A propos de nous</h1>
         <div>
-            <h2>Qui sommes-nous ?</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam voluptate deserunt odit, sit rem fuga eius, impedit quisquam exercitationem facilis eos minus doloremque rerum! Blanditiis doloribus facilis quibusdam earum culpa?</p>
+            <p>Bienvenue sur le Galaxy Store, dans notre boutique vous pourrez y trouver des planètes ou des étoiles. En ce qui concerne les étoiles, vous pourrez les partager avec d'autres propriétaires dans le but d'utiliser leur énergie. Nous tenons à vous rappeler, que toutes les planètes présentées dans la boutique ont été conçues par notre équipe :) .Nous esperons donc, qu'elles  vous conviendront. Merci </p>
         </div>
-        <!-- <div>
-            <h2>Que faisons-nous ?</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam voluptate deserunt odit, sit rem fuga eius, impedit quisquam exercitationem facilis eos minus doloremque rerum! Blanditiis doloribus facilis quibusdam earum culpa?</p>
-        </div> -->
     </main>
 
     <footer></footer>

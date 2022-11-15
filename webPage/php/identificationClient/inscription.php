@@ -132,7 +132,7 @@ unset($bd);
                         <input type="text" id="pseudo" name="pseudo" required>
                     </div>
                     <div <?php
-                            if ($nb > 0) { /* Si inscription réussi */
+                            if ($nb > 0) {
                                 echo 'style="display: none;"';
                             }
                             ?>>
@@ -148,7 +148,7 @@ unset($bd);
                         <input type="text" id="mail" name="mail" required>
                     </div>
                     <div <?php
-                            if ($nb > 0) { /* Si inscription réussi */
+                            if ($nb > 0) {
                                 echo 'style="display: none;"';
                             }
                             ?>>
@@ -165,7 +165,7 @@ unset($bd);
                     </div>
 
                     <button type="submit" <?php
-                                            if ($nb > 0) { /* Si inscription réussi */
+                                            if ($nb > 0) {
                                                 echo 'style="display: none;"';
                                             }
                                             ?>>
@@ -173,7 +173,7 @@ unset($bd);
                     </button>
 
                     <div class="small_text" <?php
-                                            if ($nb > 0) { /* Si inscription réussi */
+                                            if ($nb > 0) {
                                                 echo 'style="display: none;"';
                                             }
                                             ?>>
@@ -181,7 +181,7 @@ unset($bd);
                     </div>
 
                     <?php
-                    if ($nb > 0) { /* Si inscription réussi */
+                    if ($nb > 0) {
                         echo '<a href="./connexion.php" class="small_link" style="text-align:center;">Se connecter</a>';
                     }
                     ?>
