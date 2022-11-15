@@ -6,18 +6,35 @@ if ($_POST["type"] == "planete") {
 } elseif ($_POST["type"] == "etoile") {
 	$sql = "SELECT * FROM etoile WHERE idEt=" . $_POST["id"] . ";";
 }
-$sqlPartager = 'SELECT idEt, 100-SUM(prct) AS "prctDispo" FROM partager WHERE idEt='.$_POST["id"].' GROUP BY idEt;';
+$sqlPartager = 'SELECT idEt, 100-SUM(prct) AS "prctDispo" FROM partager WHERE idEt=' . $_POST["id"] . ' GROUP BY idEt;';
+
 
 $resultats = $bd->query($sql);
 
 $resultatsPartager = $bd->query($sqlPartager);
 
+
 $info = get_object_vars($resultats->fetchAll(PDO::FETCH_OBJ)[0]);
 
 $pourcentDispo = get_object_vars($resultatsPartager->fetchAll(PDO::FETCH_OBJ)[0])["prctDispo"];
 
+if ($_POST["type"] == "planete") {
+	$sqlProprio = 'SELECT pseudo, idCl FROM client WHERE idCl = ' . $info["idCl"] . ';';
+} elseif ($_POST["type"] == "etoile") {
+	$sqlProprio = 'SELECT pseudo, client.idCl FROM client INNER JOIN partager ON client.idCl = partager.idCl WHERE idEt = ' . $_POST["id"] . ';';
+}
+$resultatsProprio = $bd->query($sqlProprio);
+
+// echo("'".empty($resultatsProprio).'"');
+if (!empty($resultatsProprio)) {
+	$proprio = $resultatsProprio->fetchAll(PDO::FETCH_OBJ);
+} else {
+	$proprio = null;
+}
+
+/* Continuité de la connexion */
 if (isset($_POST) && isset($_POST["mail"]) && isset($_POST["mdp"])) {
-	$sqlU = 'SELECT idCl FROM client WHERE mail="' . $_POST["mail"] . '" AND mdp="' . $_POST["mdp"].'";';
+	$sqlU = 'SELECT idCl FROM client WHERE mail="' . $_POST["mail"] . '" AND mdp="' . $_POST["mdp"] . '";';
 
 	$resultU = $bd->query($sqlU);
 
@@ -103,28 +120,49 @@ unset($bd);
 				<?php
 				if ($_POST["type"] == "planete") {
 					if (isset($info["idCl"])) {
-						echo '<h2 class="noir">Vendu</h2>';
+						echo '<h2>Vendu</h2>';
 					} else {
-						echo '<h2>Disponible</h2>';
+						echo '<h2 class="noir">Disponible</h2>';
 					}
-
 				} elseif ($_POST["type"] == "etoile") {
-					echo '<h2>'.$pourcentDispo.'% Disponible</h2>';
+					if (intval($pourcentDispo) != 0) {
+						echo '<h2 class="noir">' . $pourcentDispo . '% Disponible</h2>';
+					}else {
+						echo '<h2>' . $pourcentDispo . '% Disponible</h2>';
+					}
 				} ?>
 			</div>
 			<p>
 				<?php
 				if ($_POST["type"] == "planete") {
+					if (isset($proprio)) {
+						$infoProp = get_object_vars($proprio[0]);
+						$propText = '<br>Propriétaire : ' . $infoProp["pseudo"];
+					} else {
+						$propText = null;
+					}
+
+
 					echo 'Masse = ' . pow(10, $info["massPl"]) . ' Kg<br>
 					Surface = ' . pow(10, $info["surf"]) . ' Km²<br>
 					Température moyennne de surface = ' . $info["tempPl"] . ' °C<br>
-					Distance par rapport à la Terre = ' . pow(10, $info["distPl"]) . 'UA';
-				
+					Distance par rapport à la Terre = ' . pow(10, $info["distPl"]) . 'UA' . $propText;
 				} elseif ($_POST["type"] == "etoile") {
+					if (isset($proprio)) {
+						$propText = "<br>Propriétaire.s : ";
+						foreach ($proprio as $p) {
+							$pseudo = get_object_vars($p)["pseudo"];
+							$propText = $propText.$pseudo.", ";
+						}
+						// echo $propText;
+					} else {
+						$propText = null;
+					}
+
 					echo 'Masse = ' . pow(10, $info["masseEt"]) . ' Kg<br>
 					Surface = ' . pow(10, $info["energie"]) . ' J<br>
 					Température moyennne de surface = ' . $info["tempEt"] . ' °C<br>
-					Distance par rapport à la Terre = ' . pow(10, $info["distEt"]) . 'UA';
+					Distance par rapport à la Terre = ' . pow(10, $info["distEt"]) . 'UA'. $propText;
 				}
 				?>
 			</p>

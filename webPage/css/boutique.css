@@ -82,7 +82,7 @@ h4 {
 	background-position-y: -22px !important; /* !important c pour que ce soit prioritaire par rapport à de possible conflit ds d'autres fichiers*/
 	background-position-x: center !important;
 	background-size: cover !important;
-	background-repeat: no-repeat;
+	background-repeat: no-repeat !important;
 }
   
 .scroll {

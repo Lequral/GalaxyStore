@@ -42,6 +42,10 @@ h2:not(.noir) {
 	text-transform: capitalize !important;
 }
 
+#etoile .noir {
+	width: 255px !important;
+}
+
 .boutons {
 	grid-area: 2 / 1 / 2 / span 5;
 	gap: 15px;
