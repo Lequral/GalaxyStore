@@ -82,8 +82,8 @@ button:hover h4 {
 }
 
 .bouton-main {
-	width: 100%;
-	height: 100%;
+	width: 165px;
+	height: 50px;
 	border-radius: 8px;
 	display: flex;
 	justify-content: center;
@@ -108,4 +108,26 @@ button:hover h4 {
 	pointer-events: none;
 	cursor: pointer;
 	opacity: 50%;
+}
+
+.prct {
+  width: 225px !important;
+  display: flex;
+  justify-content: end;
+}
+
+.acheter.prct {
+  background-color: #C6C6C6;
+  border: 5px black solid;
+}
+
+.prct .bouton-main {
+  position: relative;
+  top: -5px;
+  right: -5px;
+}
+
+.vendre.prct {
+  background-color: #C6C6C6;
+  border: 5px #C6C6C6 solid;
 }

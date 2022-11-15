@@ -223,11 +223,14 @@ unset($bd);
 						}
 					}
 				}elseif($_POST["type"] == "etoile") {
+					// ACHETER
 					echo '<button class="acheter prct">
 							<div class="bouton-main">
 								<h4>ACHETER</h4>
 							</div>
 						</button>';
+
+					// VENDRE
 					echo '<button class="vendre prct">
 							<div class="bouton-main">
 								<h4>VENDRE</h4>
