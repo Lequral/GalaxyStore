@@ -1,4 +1,4 @@
-jt en train de faire la connexion et mtn faut envoyer envoyer + récup les identifiants vers compte.php
+Repository Github du projet : https://github.com/Lequral/GalaxyStore
 
 #### Nom de la base de donnée PhpMyAdmin : "galaxyDatabase"
 

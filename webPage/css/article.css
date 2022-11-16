@@ -20,9 +20,10 @@ main {
 }
 
 #content {
-	grid-area: 1 / 1 / 1 / span 6;
+	grid-area: 1 / 2 / 1 / span 5;
 	background-color: rgba(0, 0, 0, 0.35);
 	padding: 10px;
+	height: min-content;
 }
 
 .attribut {

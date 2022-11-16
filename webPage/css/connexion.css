@@ -37,6 +37,7 @@ h2 {
 form h5 {
     margin: 0;
     text-transform: uppercase;
+    text-align: center;
 }
 
 label {
@@ -104,4 +105,17 @@ h5.error {
 
 #smallA {
     text-align: center;
+}
+
+#deconnexion {
+    background-color: #0F101D;
+    border-radius: 8px;
+    border: 0;
+    width: 100%;
+    height: 40px;
+    color: #fff;
+    margin-top: 1vh;
+    display: flex;
+    justify-content: center;
+    flex-flow: column nowrap;
 }

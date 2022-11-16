@@ -58,10 +58,12 @@ unset($bd);
 </head>
 
 <body <?php echo 'id="' . $_POST["type"] . '"';
+		if ($_POST["type"] == "planete") {
 		echo 'style="background-image: url(./../../statique/image/PG' . $_POST["idAstre"] . '.jpg);"';
+		}
 		?>>
 	<div id="bg">
-		
+
 	</div>
 	<header>
 		<h3>GALAXY STORE</h3>

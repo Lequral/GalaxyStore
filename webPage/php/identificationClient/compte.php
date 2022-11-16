@@ -127,9 +127,14 @@ unset($bd);
                         <h5>Modifier</h5>
                     </button>
 
+                    
                     <button type="submit" name="submit" value="supprimer" class="danger">
                         <h5>Supprimer</h5>
                     </button>
+                    
+                    <a href="./../../index.php" id="deconnexion">
+                        <h5>Déconnexion</h5>
+                    </a>
                 </div>
         </form>
     </main>
