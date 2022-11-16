@@ -1,6 +1,7 @@
 <?php
 require_once("./../identificationBD.php");
 
+/* Récup info de l'astre */
 if ($_POST["type"] == "planete") {
 	$sql = "SELECT * FROM planete WHERE idPl=" . $_POST["idAstre"] . ";";
 } elseif ($_POST["type"] == "etoile") {
@@ -10,8 +11,7 @@ $resultats = $bd->query($sql);
 
 $info = get_object_vars($resultats->fetchAll(PDO::FETCH_OBJ)[0]);
 
-
-// Erreur ?
+/* Récup le pourcentage de part disponible */
 $sqlPartager = 'SELECT idEt, 100-SUM(prct) AS "prctDispo" FROM partager WHERE idEt=' . $_POST["idAstre"] . ' GROUP BY idEt;';
 
 $resultatsPartager = $bd->query($sqlPartager);
@@ -19,19 +19,13 @@ $resultatsPartager = $bd->query($sqlPartager);
 $pourcentDispo = get_object_vars($resultatsPartager->fetchAll(PDO::FETCH_OBJ)[0])["prctDispo"];
 
 
+/* Récup les propriétaires */
 if ($_POST["type"] == "planete") {
 	$sqlProprio = 'SELECT pseudo, idCl FROM client WHERE idCl = ' . $info["idCl"] . ';';
 } elseif ($_POST["type"] == "etoile") {
-	$sqlProprio = 'SELECT pseudo, client.idCl FROM client INNER JOIN partager ON client.idCl = partager.idCl WHERE idEt = ' . $_POST["idAstre"] . ';';
+	$sqlProprio = 'SELECT pseudo, client.idCl, prct FROM client INNER JOIN partager ON client.idCl = partager.idCl WHERE idEt = ' . $_POST["idAstre"] . ';';
 }
 $resultatsProprio = $bd->query($sqlProprio);
-
-// echo("'".empty($resultatsProprio).'"');
-if (!empty($resultatsProprio)) {
-	$proprio = $resultatsProprio->fetchAll(PDO::FETCH_OBJ);
-} else {
-	$proprio = null;
-}
 
 /* Continuité de la connexion */
 if (isset($_POST) && isset($_POST["mail"]) && isset($_POST["mdp"])) {
@@ -42,6 +36,27 @@ if (isset($_POST) && isset($_POST["mail"]) && isset($_POST["mdp"])) {
 
 	$idUserConnected = get_object_vars($resultU->fetchAll(PDO::FETCH_OBJ)[0])["idCl"];
 }
+
+/* Fini de récup les propriétaires et test si l'utilisateur connecté est dedans*/
+if (!empty($resultatsProprio)) {
+	$proprio = $resultatsProprio->fetchAll(PDO::FETCH_OBJ);
+
+	foreach ($proprio as $p) {
+		$idP = get_object_vars($p)["idCl"];
+		$prct = get_object_vars($p)["prct"];
+		if ($idP == $idUserConnected) {
+			$prctUserConnected = $prct;
+		}
+	}
+	if (empty($prctUserConnected)) {
+		$prctUserConnected = 0;
+	}
+} else {
+	$proprio = null;
+}
+
+
+
 
 unset($bd);
 ?>
@@ -59,7 +74,7 @@ unset($bd);
 
 <body <?php echo 'id="' . $_POST["type"] . '"';
 		if ($_POST["type"] == "planete") {
-		echo 'style="background-image: url(./../../statique/image/PG' . $_POST["idAstre"] . '.jpg);"';
+			echo 'style="background-image: url(./../../statique/image/PG' . $_POST["idAstre"] . '.jpg);"';
 		}
 		?>>
 	<div id="bg">
@@ -190,71 +205,86 @@ unset($bd);
 		<div class="boutons">
 
 			<?php
-			// if (isset($_POST["mail"]) && isset($_POST["mdp"])) {
+			if (isset($_POST["mail"]) && isset($_POST["mdp"])) {
 
-			// 	if ($_POST["type"] == "planete") {
-			// 		// Btn ACHETER
-			// 		if (!isset($proprio)) {
-			// 			/* Pas de propriétaire donc peut être 	 si argent...*/
-			// 			echo '<button class="acheter">
-			// 					<div class="bouton-main">
-			// 						<h4>ACHETER</h4>
-			// 					</div>
-			// 				</button>';
-			// 		} else {
-			// 			echo '<button class="acheter btnDesactive">
-			// 					<div class="bouton-main">
-			// 						<h4>ACHETER</h4>
-			// 					</div>
-			// 				</button>';
-			// 		}
+				if ($_POST["type"] == "planete") {
+					// Btn ACHETER
+					if (!isset($proprio)) {
+						/* Pas de propriétaire donc peut être 	 si argent...*/
+						echo '<form action="./transaction" method="post" class="noStyle btnTransac">
+						<input type="number" name="prct" id="prct" min="0" max="100" value="100">
+						<input type="text" name="type" id="type" value="planete" class="hidden">
+						<input type="submit" value="acheter" class="acheter">
+					</form>';
+					} else {
+						echo '<form action="./transaction" method="post" class="noStyle btnTransac btnDesactive">
+						<input type="number" name="prct" id="prct" min="0" max="100" value="100">
+						<input type="text" name="type" id="type" value="planete" class="hidden">
+						<input type="submit" value="acheter" class="acheter">
+					</form>';
+					}
 
-			// 		// Btn VENDRE
-			// 		if (!isset($proprio)) {
-			// 			/* Pas de propriétaire 	 si argent...*/
-			// 			echo '<button class="vendre btnDesactive">
-			// 					<div class="bouton-main">
-			// 						<h4>VENDRE</h4>
-			// 					</div>
-			// 				</button>';
-			// 		} else {
-			// 			$idProprio = get_object_vars($proprio[0])["idCl"];
-			// 			if ($idUserConnected == $idProprio) { // récup idProprio
-			// 				/* Appartient pas à l'utilisateur connecté*/
-			// 				echo '<button class="vendre">
-			// 					<div class="bouton-main">
-			// 						<h4>VENDRE</h4>
-			// 					</div>
-			// 				</button>';
-			// 			} else {
-			// 				/* N'appartient pas à l'utilisateur connecté*/
-			// 				echo '<button class="vendre btnDesactive">
-			// 					<div class="bouton-main">
-			// 						<h4>VENDRE</h4>
-			// 					</div>
-			// 				</button>';
-			// 			}
-			// 		}
-			// 	} elseif ($_POST["type"] == "etoile") {
-			// 		// ACHETER
-			// 		echo '<button class="acheter prct">
-			// 				<input type="number" name="prct" id="prct" value="0" max="100" min="0">
-			// 				<div class="bouton-main">
-			// 					<h4>ACHETER</h4>
-			// 				</div>
-			// 			</button>';
+					// Btn VENDRE
+					if (!isset($proprio)) {
+						/* Pas de propriétaire 	 si argent...*/
+						echo '<form action="./transaction" method="post" class="noStyle btnTransac btnDesactive">
+						<input type="number" name="prct" id="prct" min="0" max="100" value="100">
+						<input type="text" name="type" id="type" value="planete" class="hidden">
+						<input type="submit" value="vendre" class="vendre">
+					</form>';
+					} else {
+						$idProprio = get_object_vars($proprio[0])["idCl"];
+						if ($idUserConnected == $idProprio) { // récup idProprio
+							/* Appartient pas à l'utilisateur connecté*/
+							echo '<form action="./transaction" method="post" class="noStyle btnTransac">
+							<input type="number" name="prct" id="prct" min="0" max="100" value="100">
+							<input type="text" name="type" id="type" value="planete" class="hidden">
+							<input type="submit" value="vendre" class="vendre">
+						</form>';
+						} else {
+							/* N'appartient pas à l'utilisateur connecté*/
+							echo '<form action="./transaction" method="post" class="noStyle btnTransac btnDesactive">
+							<input type="number" name="prct" id="prct" min="0" max="100" value="100">
+							<input type="text" name="type" id="type" value="planete" class="hidden">
+							<input type="submit" value="vendre" class="vendre">
+						</form>';
+						}
+					}
+				} elseif ($_POST["type"] == "etoile") {
 
-			// 		// VENDRE
-			// 		echo '<button class="vendre prct">
-			// 				<input type="number" name="prct" id="prct" value="0" max="100" min="0">
-			// 				<div class="bouton-main">
-			// 					<h4>VENDRE</h4>
-			// 				</div>
-			// 			</button>';
-			// 	}
-			// } else {
-			// 	echo "<p>Pour intéragir, veuillez vous connecter.</p>";
-			// }
+					// ACHETER
+					if (intval($pourcentDispo) > 0) {
+						echo '<form action="./transaction" method="post" class="noStyle btnTransac prct">
+							<input type="number" name="prct" id="prct" min="0" max="' . $pourcentDispo . '" value="' . $pourcentDispo . '">
+							<input type="text" name="type" id="type" value="etoile" class="hidden">
+							<input type="submit" value="acheter" class="acheter">
+						</form>';
+					} elseif (intval($pourcentDispo) == 0) {
+						echo '<form action="./transaction" method="post" class="noStyle btnTransac prct btnDesactive">
+							<input type="number" name="prct" id="prct" min="0" max="' . $pourcentDispo . '" value="' . $pourcentDispo . '">
+							<input type="text" name="type" id="type" value="etoile" class="hidden">
+							<input type="submit" value="acheter" class="acheter">
+						</form>';
+					}
+
+					// VENDRE
+					if (intval($prctUserConnected) > 0) {
+						echo '<form action="./transaction" method="post" class="noStyle btnTransac prct">
+								<input type="number" name="prct" id="prct" min="0" max="' . $prctUserConnected . '" value="' . $prctUserConnected . '">
+								<input type="text" name="type" id="type" value="etoile" class="hidden">
+								<input type="submit" value="vendre" class="vendre">
+							</form>';
+					} elseif(intval($prctUserConnected) == 0) {
+						echo '<form action="./transaction" method="post" class="noStyle btnTransac prct 	btnDesactive">
+								<input type="number" name="prct" id="prct" min="0" max="' . $prctUserConnected . '" value="' . $prctUserConnected . '">
+								<input type="text" name="type" id="type" value="etoile" class="hidden">
+								<input type="submit" value="vendre" class="vendre">
+							</form>';
+					}
+				}
+			} else {
+				echo "<p>Pour intéragir, veuillez vous connecter.</p>";
+			}
 
 			?>
 
