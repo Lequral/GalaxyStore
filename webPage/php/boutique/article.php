@@ -57,7 +57,12 @@ unset($bd);
 	<link rel="stylesheet" href="./../../css/article.css">
 </head>
 
-<body id="<?php echo $_POST["type"]; ?>">
+<body <?php echo 'id="' . $_POST["type"] . '"';
+		echo 'style="background-image: url(./../../statique/image/PG' . $_POST["idAstre"] . '.jpg);"';
+		?>>
+	<div id="bg">
+		
+	</div>
 	<header>
 		<h3>GALAXY STORE</h3>
 		<ul class="button">
@@ -251,7 +256,7 @@ unset($bd);
 
 			?>
 
-			<form action="./transaction" method="post" class="noStyle btnTransac">
+			<!-- <form action="./transaction" method="post" class="noStyle btnTransac">
 				<input type="number" name="prct" id="prct">
 				<input type="submit" value="acheter" class="acheter">
 			</form>
@@ -259,7 +264,7 @@ unset($bd);
 			<form action="./transaction" method="post" class="noStyle btnTransac">
 				<input type="number" name="prct" id="prct">
 				<input type="submit" value="vendre" class="vendre">
-			</form>
+			</form> -->
 		</div>
 	</main>
 

@@ -1,5 +1,13 @@
-body {
+#bg {
 	background-image: url(../statique/image/EtoilesBg.png), linear-gradient(-45deg, rgba(24, 72, 125, 0.5), rgba(15, 16, 29, 0.2), rgba(33, 20, 57, 0.5));
+	background-blend-mode: lighten;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -10;
+	opacity: 0.3;
 }
 
 
@@ -13,6 +21,8 @@ main {
 
 #content {
 	grid-area: 1 / 1 / 1 / span 6;
+	background-color: rgba(0, 0, 0, 0.35);
+	padding: 10px;
 }
 
 .attribut {
