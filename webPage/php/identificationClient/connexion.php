@@ -139,6 +139,7 @@ echo "<!--connecte = " . $connecte . "-->";
 </body>
 
 <?php
+/* Une fois que qq a entré ses info, il est redirigé vers cette page et c'est là que le formule est validé automatique pour aller sur compte.php*/
 if ($connecte) {
     echo "<script type=\"text/javascript\">window.onload=function(){document.forms['connexion'].submit();}</script>";
 }

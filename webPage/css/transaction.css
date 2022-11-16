@@ -1,0 +1,38 @@
+main {
+    grid-template-rows: 1fr;
+}
+
+.content {
+    grid-area: 1 / 4 / 1 / span 6;
+    height: min-content;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-flow: column nowrap;
+    row-gap: 50px;
+
+    padding: 90px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: #0C264E;
+    text-align: center;
+}
+
+button {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    background-color: #0F101D;
+    border-radius: 8px;
+    border: 0;
+    width: 100%;
+    height: 40px;
+    color: #fff;
+    margin-top: 1vh;
+}
+
+button h5 {
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
