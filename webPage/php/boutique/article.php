@@ -69,7 +69,7 @@ unset($bd);
 
 <head>
 	<meta charset="UTF-8">
-	<title>Aperçu de l'astre</title>
+	<title>Galaxy Store - Aperçu</title>
 	<link rel="stylesheet" href="./../../css/police.css">
 	<link rel="stylesheet" href="./../../css/header+footer.css">
 	<link rel="stylesheet" href="./../../css/article.css">
@@ -214,13 +214,13 @@ unset($bd);
 					// Btn ACHETER
 					if (!isset($proprio)) {
 						/* Pas de propriétaire donc peut être 	 si argent...*/
-						echo '<form action="./transaction" method="post" class="noStyle btnTransac">
+						echo '<form action="./transaction.php" method="post" class="noStyle btnTransac">
 						<input type="number" name="prct" id="prct" min="1" max="100" value="100">
 						<input type="text" name="type" id="type" value="planete" class="hidden">
 						<input type="submit" value="acheter" class="acheter">
 					</form>';
 					} else {
-						echo '<form action="./transaction" method="post" class="noStyle btnTransac btnDesactive">
+						echo '<form action="./transaction.php" method="post" class="noStyle btnTransac btnDesactive">
 						<input type="number" name="prct" id="prct" min="1" max="100" value="100">
 						<input type="text" name="type" id="type" value="planete" class="hidden">
 						<input type="submit" value="acheter" class="acheter">
@@ -230,7 +230,7 @@ unset($bd);
 					// Btn VENDRE
 					if (!isset($proprio)) {
 						/* Pas de propriétaire 	 si argent...*/
-						echo '<form action="./transaction" method="post" class="noStyle btnTransac btnDesactive">
+						echo '<form action="./transaction.php" method="post" class="noStyle btnTransac btnDesactive">
 						<input type="number" name="prct" id="prct" min="1" max="100" value="100">
 						<input type="text" name="type" id="type" value="planete" class="hidden">
 						<input type="submit" value="vendre" class="vendre">
@@ -239,14 +239,14 @@ unset($bd);
 						$idProprio = get_object_vars($proprio[0])["idCl"];
 						if ($idUserConnected == $idProprio) { // récup idProprio
 							/* Appartient pas à l'utilisateur connecté*/
-							echo '<form action="./transaction" method="post" class="noStyle btnTransac">
+							echo '<form action="./transaction.php" method="post" class="noStyle btnTransac">
 							<input type="number" name="prct" id="prct" min="1" max="100" value="100">
 							<input type="text" name="type" id="type" value="planete" class="hidden">
 							<input type="submit" value="vendre" class="vendre">
 						</form>';
 						} else {
 							/* N'appartient pas à l'utilisateur connecté*/
-							echo '<form action="./transaction" method="post" class="noStyle btnTransac btnDesactive">
+							echo '<form action="./transaction.php" method="post" class="noStyle btnTransac btnDesactive">
 							<input type="number" name="prct" id="prct" min="1" max="100" value="100">
 							<input type="text" name="type" id="type" value="planete" class="hidden">
 							<input type="submit" value="vendre" class="vendre">
@@ -257,13 +257,13 @@ unset($bd);
 
 					// ACHETER
 					if (intval($pourcentDispo) > 0) {
-						echo '<form action="./transaction" method="post" class="noStyle btnTransac prct">
+						echo '<form action="./transaction.php" method="post" class="noStyle btnTransac prct">
 							<input type="number" name="prct" id="prct" min="1" max="' . $pourcentDispo . '" value="' . $pourcentDispo . '">
 							<input type="text" name="type" id="type" value="etoile" class="hidden">
 							<input type="submit" value="acheter" class="acheter">
 						</form>';
 					} elseif (intval($pourcentDispo) == 0) {
-						echo '<form action="./transaction" method="post" class="noStyle btnTransac prct btnDesactive">
+						echo '<form action="./transaction.php" method="post" class="noStyle btnTransac prct btnDesactive">
 							<input type="number" name="prct" id="prct" min="1" max="' . $pourcentDispo . '" value="' . $pourcentDispo . '">
 							<input type="text" name="type" id="type" value="etoile" class="hidden">
 							<input type="submit" value="acheter" class="acheter">
@@ -272,13 +272,13 @@ unset($bd);
 
 					// VENDRE
 					if (intval($prctUserConnected) > 0) {
-						echo '<form action="./transaction" method="post" class="noStyle btnTransac prct">
+						echo '<form action="./transaction.php" method="post" class="noStyle btnTransac prct">
 								<input type="number" name="prct" id="prct" min="1" max="' . $prctUserConnected . '" value="' . $prctUserConnected . '">
 								<input type="text" name="type" id="type" value="etoile" class="hidden">
 								<input type="submit" value="vendre" class="vendre">
 							</form>';
 					} elseif (intval($prctUserConnected) == 0) {
-						echo '<form action="./transaction" method="post" class="noStyle btnTransac prct 	btnDesactive">
+						echo '<form action="./transaction.php" method="post" class="noStyle btnTransac prct 	btnDesactive">
 								<input type="number" name="prct" id="prct" min="1" max="' . $prctUserConnected . '" value="' . $prctUserConnected . '">
 								<input type="text" name="type" id="type" value="etoile" class="hidden">
 								<input type="submit" value="vendre" class="vendre">

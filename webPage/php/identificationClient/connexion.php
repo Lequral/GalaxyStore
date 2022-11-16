@@ -49,7 +49,7 @@ echo "<!--connecte = " . $connecte . "-->";
 
 <head>
     <meta charset="UTF-8">
-    <title>Galaxy Store</title>
+    <title>Galaxy Store - Connexion</title>
     <link rel="stylesheet" href="./../../css/police.css">
     <link rel="stylesheet" href="./../../css/header+footer.css">
     <link rel="stylesheet" href="./../../css/connexion.css">

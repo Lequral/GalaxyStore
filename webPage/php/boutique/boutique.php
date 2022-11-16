@@ -27,7 +27,7 @@ unset($bd); /* déconnexion de la BD */
 
 <head>
     <meta charset="UTF-8">
-    <title>Galaxy Store</title>
+    <title>Galaxy Store - Boutique</title>
     <link rel="stylesheet" href="./../../css/police.css">
     <link rel="stylesheet" href="./../../css/header+footer.css">
     <link rel="stylesheet" href="./../../css/boutique.css">
