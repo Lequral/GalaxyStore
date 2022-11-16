@@ -37,19 +37,22 @@ if (isset($_POST) && isset($_POST["mail"]) && isset($_POST["mdp"])) {
 	$idUserConnected = get_object_vars($resultU->fetchAll(PDO::FETCH_OBJ)[0])["idCl"];
 }
 
-/* Fini de récup les propriétaires et test si l'utilisateur connecté est dedans*/
+/* Fini de récup les propriétaires */
 if (!empty($resultatsProprio)) {
 	$proprio = $resultatsProprio->fetchAll(PDO::FETCH_OBJ);
 
-	foreach ($proprio as $p) {
-		$idP = get_object_vars($p)["idCl"];
-		$prct = get_object_vars($p)["prct"];
-		if ($idP == $idUserConnected) {
-			$prctUserConnected = $prct;
+	// test si l'utilisateur connecté est dans les proprio
+	if($_POST["type"] == "etoile") {
+		foreach ($proprio as $p) {
+			$idP = get_object_vars($p)["idCl"];
+			$prct = get_object_vars($p)["prct"];
+			if ($idP == $idUserConnected) {
+				$prctUserConnected = $prct;
+			}
 		}
-	}
-	if (empty($prctUserConnected)) {
-		$prctUserConnected = 0;
+		if (empty($prctUserConnected)) {
+			$prctUserConnected = 0;
+		}
 	}
 } else {
 	$proprio = null;
@@ -274,7 +277,7 @@ unset($bd);
 								<input type="text" name="type" id="type" value="etoile" class="hidden">
 								<input type="submit" value="vendre" class="vendre">
 							</form>';
-					} elseif(intval($prctUserConnected) == 0) {
+					} elseif (intval($prctUserConnected) == 0) {
 						echo '<form action="./transaction" method="post" class="noStyle btnTransac prct 	btnDesactive">
 								<input type="number" name="prct" id="prct" min="1" max="' . $prctUserConnected . '" value="' . $prctUserConnected . '">
 								<input type="text" name="type" id="type" value="etoile" class="hidden">
@@ -287,16 +290,6 @@ unset($bd);
 			}
 
 			?>
-
-			<!-- <form action="./transaction" method="post" class="noStyle btnTransac">
-				<input type="number" name="prct" id="prct">
-				<input type="submit" value="acheter" class="acheter">
-			</form>
-
-			<form action="./transaction" method="post" class="noStyle btnTransac">
-				<input type="number" name="prct" id="prct">
-				<input type="submit" value="vendre" class="vendre">
-			</form> -->
 		</div>
 	</main>
 
