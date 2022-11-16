@@ -153,16 +153,12 @@ unset($bd);
 				<?php
 				if ($_POST["type"] == "planete") {
 					if (isset($info["idCl"])) {
-						echo '<h2>Vendu</h2>';
+						echo '<h2 class="noir">Vendu</h2>';
 					} else {
 						echo '<h2 class="noir">Disponible</h2>';
 					}
 				} elseif ($_POST["type"] == "etoile") {
-					if (intval($pourcentDispo) != 0) {
-						echo '<h2 class="noir">' . $pourcentDispo . '% Disponible</h2>';
-					} else {
-						echo '<h2>' . $pourcentDispo . '% Disponible</h2>';
-					}
+					echo '<h2 class="noir">' . $pourcentDispo . '% Disponible</h2>';					
 				} ?>
 			</div>
 			<p>
