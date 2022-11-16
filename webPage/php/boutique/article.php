@@ -188,7 +188,7 @@ unset($bd);
 								$propText = $propText . ", " . $pseudo;
 							}
 						}
-						// echo $propText;
+						// "echo $propText;
 					} else {
 						$propText = null;
 					}
@@ -212,13 +212,13 @@ unset($bd);
 					if (!isset($proprio)) {
 						/* Pas de propriétaire donc peut être 	 si argent...*/
 						echo '<form action="./transaction" method="post" class="noStyle btnTransac">
-						<input type="number" name="prct" id="prct" min="0" max="100" value="100">
+						<input type="number" name="prct" id="prct" min="1" max="100" value="100">
 						<input type="text" name="type" id="type" value="planete" class="hidden">
 						<input type="submit" value="acheter" class="acheter">
 					</form>';
 					} else {
 						echo '<form action="./transaction" method="post" class="noStyle btnTransac btnDesactive">
-						<input type="number" name="prct" id="prct" min="0" max="100" value="100">
+						<input type="number" name="prct" id="prct" min="1" max="100" value="100">
 						<input type="text" name="type" id="type" value="planete" class="hidden">
 						<input type="submit" value="acheter" class="acheter">
 					</form>';
@@ -228,7 +228,7 @@ unset($bd);
 					if (!isset($proprio)) {
 						/* Pas de propriétaire 	 si argent...*/
 						echo '<form action="./transaction" method="post" class="noStyle btnTransac btnDesactive">
-						<input type="number" name="prct" id="prct" min="0" max="100" value="100">
+						<input type="number" name="prct" id="prct" min="1" max="100" value="100">
 						<input type="text" name="type" id="type" value="planete" class="hidden">
 						<input type="submit" value="vendre" class="vendre">
 					</form>';
@@ -237,14 +237,14 @@ unset($bd);
 						if ($idUserConnected == $idProprio) { // récup idProprio
 							/* Appartient pas à l'utilisateur connecté*/
 							echo '<form action="./transaction" method="post" class="noStyle btnTransac">
-							<input type="number" name="prct" id="prct" min="0" max="100" value="100">
+							<input type="number" name="prct" id="prct" min="1" max="100" value="100">
 							<input type="text" name="type" id="type" value="planete" class="hidden">
 							<input type="submit" value="vendre" class="vendre">
 						</form>';
 						} else {
 							/* N'appartient pas à l'utilisateur connecté*/
 							echo '<form action="./transaction" method="post" class="noStyle btnTransac btnDesactive">
-							<input type="number" name="prct" id="prct" min="0" max="100" value="100">
+							<input type="number" name="prct" id="prct" min="1" max="100" value="100">
 							<input type="text" name="type" id="type" value="planete" class="hidden">
 							<input type="submit" value="vendre" class="vendre">
 						</form>';
@@ -255,13 +255,13 @@ unset($bd);
 					// ACHETER
 					if (intval($pourcentDispo) > 0) {
 						echo '<form action="./transaction" method="post" class="noStyle btnTransac prct">
-							<input type="number" name="prct" id="prct" min="0" max="' . $pourcentDispo . '" value="' . $pourcentDispo . '">
+							<input type="number" name="prct" id="prct" min="1" max="' . $pourcentDispo . '" value="' . $pourcentDispo . '">
 							<input type="text" name="type" id="type" value="etoile" class="hidden">
 							<input type="submit" value="acheter" class="acheter">
 						</form>';
 					} elseif (intval($pourcentDispo) == 0) {
 						echo '<form action="./transaction" method="post" class="noStyle btnTransac prct btnDesactive">
-							<input type="number" name="prct" id="prct" min="0" max="' . $pourcentDispo . '" value="' . $pourcentDispo . '">
+							<input type="number" name="prct" id="prct" min="1" max="' . $pourcentDispo . '" value="' . $pourcentDispo . '">
 							<input type="text" name="type" id="type" value="etoile" class="hidden">
 							<input type="submit" value="acheter" class="acheter">
 						</form>';
@@ -270,13 +270,13 @@ unset($bd);
 					// VENDRE
 					if (intval($prctUserConnected) > 0) {
 						echo '<form action="./transaction" method="post" class="noStyle btnTransac prct">
-								<input type="number" name="prct" id="prct" min="0" max="' . $prctUserConnected . '" value="' . $prctUserConnected . '">
+								<input type="number" name="prct" id="prct" min="1" max="' . $prctUserConnected . '" value="' . $prctUserConnected . '">
 								<input type="text" name="type" id="type" value="etoile" class="hidden">
 								<input type="submit" value="vendre" class="vendre">
 							</form>';
 					} elseif(intval($prctUserConnected) == 0) {
 						echo '<form action="./transaction" method="post" class="noStyle btnTransac prct 	btnDesactive">
-								<input type="number" name="prct" id="prct" min="0" max="' . $prctUserConnected . '" value="' . $prctUserConnected . '">
+								<input type="number" name="prct" id="prct" min="1" max="' . $prctUserConnected . '" value="' . $prctUserConnected . '">
 								<input type="text" name="type" id="type" value="etoile" class="hidden">
 								<input type="submit" value="vendre" class="vendre">
 							</form>';
