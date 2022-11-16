@@ -70,8 +70,10 @@
 
     <main>
         <div class="content">
-            <h3>Transaction...</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <h3>Transaction</h3>
+            <p>
+                Suite aux crises économiques et sociales, nous recontrons des difficultés temporelles et financières, c'est pourquoi nous ne sommes pas en mesure d'achever cette transaction. Vous pouvez toutefois disposer de nos autres services et nous nous excusons du désagrément. Merci de votre compréhension.
+            </p>
             <form action="./article.php" method="post" class="noStyle">
                 <input type="text" name="idAstre" id="idAstre" value="<?php echo $_POST["idAstre"]; ?>" class="hidden">
                 <input type="text" name="type" id="type" value="<?php echo $_POST["type"]; ?>" class="hidden">
