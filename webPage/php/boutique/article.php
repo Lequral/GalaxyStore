@@ -183,89 +183,83 @@ unset($bd);
 		<div class="boutons">
 
 			<?php
-			if (isset($_POST["mail"]) && isset($_POST["mdp"])) {
+			// if (isset($_POST["mail"]) && isset($_POST["mdp"])) {
 
-				if ($_POST["type"] == "planete") {
-					// Btn ACHETER
-					if (!isset($proprio)) {
-						/* Pas de propriétaire donc peut être 	 si argent...*/
-						echo '<button class="acheter">
-								<div class="bouton-main">
-									<h4>ACHETER</h4>
-								</div>
-							</button>';
-					} else {
-						echo '<button class="acheter btnDesactive">
-								<div class="bouton-main">
-									<h4>ACHETER</h4>
-								</div>
-							</button>';
-					}
+			// 	if ($_POST["type"] == "planete") {
+			// 		// Btn ACHETER
+			// 		if (!isset($proprio)) {
+			// 			/* Pas de propriétaire donc peut être 	 si argent...*/
+			// 			echo '<button class="acheter">
+			// 					<div class="bouton-main">
+			// 						<h4>ACHETER</h4>
+			// 					</div>
+			// 				</button>';
+			// 		} else {
+			// 			echo '<button class="acheter btnDesactive">
+			// 					<div class="bouton-main">
+			// 						<h4>ACHETER</h4>
+			// 					</div>
+			// 				</button>';
+			// 		}
 
-					// Btn VENDRE
-					if (!isset($proprio)) {
-						/* Pas de propriétaire 	 si argent...*/
-						echo '<button class="vendre btnDesactive">
-								<div class="bouton-main">
-									<h4>VENDRE</h4>
-								</div>
-							</button>';
-					} else {
-						$idProprio = get_object_vars($proprio[0])["idCl"];
-						if ($idUserConnected == $idProprio) { // récup idProprio
-							/* Appartient pas à l'utilisateur connecté*/
-							echo '<button class="vendre">
-								<div class="bouton-main">
-									<h4>VENDRE</h4>
-								</div>
-							</button>';
-						} else {
-							/* N'appartient pas à l'utilisateur connecté*/
-							echo '<button class="vendre btnDesactive">
-								<div class="bouton-main">
-									<h4>VENDRE</h4>
-								</div>
-							</button>';
-						}
-					}
-				} elseif ($_POST["type"] == "etoile") {
-					// ACHETER
-					echo '<button class="acheter prct">
-							<input type="text" name="prct" id="prct" value="0" max="100" min="0">
-							<div class="bouton-main">
-								<h4>ACHETER</h4>
-							</div>
-						</button>';
+			// 		// Btn VENDRE
+			// 		if (!isset($proprio)) {
+			// 			/* Pas de propriétaire 	 si argent...*/
+			// 			echo '<button class="vendre btnDesactive">
+			// 					<div class="bouton-main">
+			// 						<h4>VENDRE</h4>
+			// 					</div>
+			// 				</button>';
+			// 		} else {
+			// 			$idProprio = get_object_vars($proprio[0])["idCl"];
+			// 			if ($idUserConnected == $idProprio) { // récup idProprio
+			// 				/* Appartient pas à l'utilisateur connecté*/
+			// 				echo '<button class="vendre">
+			// 					<div class="bouton-main">
+			// 						<h4>VENDRE</h4>
+			// 					</div>
+			// 				</button>';
+			// 			} else {
+			// 				/* N'appartient pas à l'utilisateur connecté*/
+			// 				echo '<button class="vendre btnDesactive">
+			// 					<div class="bouton-main">
+			// 						<h4>VENDRE</h4>
+			// 					</div>
+			// 				</button>';
+			// 			}
+			// 		}
+			// 	} elseif ($_POST["type"] == "etoile") {
+			// 		// ACHETER
+			// 		echo '<button class="acheter prct">
+			// 				<input type="number" name="prct" id="prct" value="0" max="100" min="0">
+			// 				<div class="bouton-main">
+			// 					<h4>ACHETER</h4>
+			// 				</div>
+			// 			</button>';
 
-					// VENDRE
-					echo '<button class="vendre prct">
-							<input type="text" name="prct" id="prct" value="0" max="100" min="0">
-							<div class="bouton-main">
-								<h4>VENDRE</h4>
-							</div>
-						</button>';
-				}
-			} else {
-				echo "<p>Pour intéragir, veuillez vous connecter.</p>";
-			}
+			// 		// VENDRE
+			// 		echo '<button class="vendre prct">
+			// 				<input type="number" name="prct" id="prct" value="0" max="100" min="0">
+			// 				<div class="bouton-main">
+			// 					<h4>VENDRE</h4>
+			// 				</div>
+			// 			</button>';
+			// 	}
+			// } else {
+			// 	echo "<p>Pour intéragir, veuillez vous connecter.</p>";
+			// }
 
 			?>
-			<!-- <button class="vendre prct">
-				<div class="bouton-main">
-					<h4>VENDRE</h4>
-				</div>
-			</button> -->
-			<!-- <button class="acheter">
-						<div class="bouton-main">
-							<h4>ACHETER</h4>
-						</div>
-					</button>
 
-			<button class="vendre">
-				<div class="bouton-main">
-					<h4>VENDRE</h4>
-				</div>
-			</button> -->
+			<form action="./transaction" method="post" class="noStyle btnTransac">
+				<input type="number" name="prct" id="prct">
+				<input type="submit" value="acheter" class="acheter">
+			</form>
+
+			<form action="./transaction" method="post" class="noStyle btnTransac">
+				<input type="number" name="prct" id="prct">
+				<input type="submit" value="vendre" class="vendre">
+			</form>
 		</div>
 	</main>
 

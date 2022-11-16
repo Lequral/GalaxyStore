@@ -53,17 +53,107 @@ h2:not(.noir) {
 	justify-content: end;
 }
 
-button:focus {
-	border: white 3px solid;
+form.prct {
+	width: 255px !important;
+	height: 50px;
+	display: flex;
+	justify-content: end;
+	flex-flow: row nowrap;
+	background-color: rgba(198, 198, 198, 0.2);
+	border: white 5px solid;
+	border-radius: 10px;
+	box-sizing: border-box;
 }
 
-button.prct .bouton-main:focus {
-	border: red 3px solid;
+form.btnTransac {
+	width: 165px;
+	height: 50px;
+	box-sizing: border-box;
+}
+
+form.btnTransac:not(.prct) input#prct {
+	display: none;
+}
+
+input[type="submit"].acheter {
+	color: #0F101D;
+	border-color: rgba(15, 16, 29, 0.5) !important;
+	background-color: #C6C6C6;
+}
+
+input[type="submit"].acheter:hover {
+	color: rgba(15, 16, 29, 0.5);
+	border-color: rgba(15, 16, 29, 0.5);
+}
+
+input[type="submit"].vendre {
+	color: #C6C6C6;
+	border-color: rgba(198, 198, 198, 0.5) !important;
+	background-color: #0F101D;
+}
+
+input[type="submit"].vendre:hover {
+	color: rgba(198, 198, 198, 0.5);
+	border-color: rgba(198, 198, 198, 0.5);
+}
+
+form.prct input[type="submit"] {
+	position: relative;
+	top: -5px;
+	right: -5px;
+}
+
+input[type="submit"] {
+	text-transform: uppercase;
+	text-align: center;
+	width: 165px;
+	height: 50px;
+	border-radius: 8px;
+	color: #0F101D;
+	font-size: 1.618rem;
+	font-weight: 600;
+	border: 0;
+	box-sizing: border-box;
+}
+
+input[type="submit"]:focus {
+	border: 5px solid;
+	box-sizing: border-box;
+}
+
+.btnDesactive {
+	pointer-events: none;
+	cursor: pointer;
+	opacity: 50%;
+}
+
+input#prct {
+	font-size: 1rem;
+	font-weight: 600;
+	background: none;
+	color: #C6C6C6;
+	text-align: center;
+
+	width: 82px;
+	padding: 0;
+	margin-right: -3px;
+	border: none;
+}
+
+/* 
+button.acheter:focus .bouton-main {
+	border: white 5px solid;
+	box-sizing: border-box;
+}
+
+button.vendre:focus .bouton-main {
+	border: #0F101D 5px solid;
+	box-sizing: border-box;
 }
 
 button .bouton-main:hover h4 {
 	opacity: 0.5;
-	/* C #C6C6C6 mais avec l'opacité à 0.5 */
+	// C #C6C6C6 mais avec l'opacité à 0.5
 }
 
 .acheter {
@@ -109,11 +199,7 @@ button .bouton-main:hover h4 {
 	color: #0F101D;
 }
 
-.btnDesactive {
-	pointer-events: none;
-	cursor: pointer;
-	opacity: 50%;
-}
+
 
 .prct {
 	width: 255px !important;
@@ -122,43 +208,27 @@ button .bouton-main:hover h4 {
 	background-color: rgba(198, 198, 198, 0.2);
 }
 
-.prct.acheter:focus .bouton-main, .prct.acheter:focus {
+.prct.acheter:focus .bouton-main {
 	border: 5px #C6C6C6 solid;
 }
 
-.prct.vendre:focus .bouton-main, .prct.vendre:focus {
+.prct.vendre:focus .bouton-main {
 	border: 5px #0F101D solid;
 }
 
 .prct:focus .bouton-main {
 	top: -5px;
 }
-  
 
-.acheter.prct {
-	border: 5px #0F101D solid;
+.prct, .prct:focus {
+	border: 5px white solid;
 }
 
-.vendre.prct {
-	border: 5px #C6C6C6 solid;
-}
 
-input#prct {
-	font-size: 1rem;
-	font-weight: 600;
-	background: none;
-	color: #C6C6C6;
-	text-align: center;
-
-	width: 82px;
-	padding: 0;
-	margin-right: -3px;
-	border: none;
-}
 
 .prct .bouton-main {
 	position: relative;
 	top: -5px;
 	right: -5px;
 	box-sizing: border-box;
-}
+} */
