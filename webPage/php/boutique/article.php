@@ -42,7 +42,7 @@ if (!empty($resultatsProprio)) {
 	$proprio = $resultatsProprio->fetchAll(PDO::FETCH_OBJ);
 
 	// test si l'utilisateur connecté est dans les proprio
-	if($_POST["type"] == "etoile") {
+	if($_POST["type"] == "etoile" && !empty($idUserConnected)) {
 		foreach ($proprio as $p) {
 			$idP = get_object_vars($p)["idCl"];
 			$prct = get_object_vars($p)["prct"];
