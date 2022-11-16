@@ -74,10 +74,16 @@ unset($bd);
                             </button>
                         </form>
                     </li>
-                    <li>
-                        <h5 id="butSelected">
-                            Boutique
-                        </h5>
+					<li>
+                        <form action="./boutique.php" method="post" class="noStyle">
+                            <input type="text" name="mail" value="' . $_POST["mail"] . '" class="hidden"></input>
+                            <input type="password" name="mdp" value="' . $_POST["mdp"] . '" class="hidden"></input>
+                            <button type="submit" class="likeA">
+                                <h5>
+								Boutique
+                                </h5>
+                            </button>
+                        </form>
                     </li>
                     <li>
                         <form action="./../identificationClient/compte.php" method="post" class="noStyle">
@@ -97,7 +103,7 @@ unset($bd);
                         </h5>
                     </li>
                     <li>
-                        <h5 id="butSelected">
+                        <h5>
                             <a href="./../boutique/boutique.php">Boutique</a>
                         </h5>
                     </li>
@@ -148,7 +154,7 @@ unset($bd);
 					echo 'Masse = ' . pow(10, $info["massPl"]) . ' Kg<br>
 					Surface = ' . pow(10, $info["surf"]) . ' Km²<br>
 					Température moyennne de surface = ' . $info["tempPl"] . ' °C<br>
-					Distance par rapport à la Terre = ' . pow(10, $info["distPl"]) . 'UA' . $propText;
+					Distance par rapport à la Terre = ' . $info["distPl"] . ' UA' . $propText;
 				} elseif ($_POST["type"] == "etoile") {
 					if (isset($proprio)) {
 						$propText = "<br>Propriétaire.s : ";
@@ -168,7 +174,7 @@ unset($bd);
 					echo 'Masse = ' . pow(10, $info["masseEt"]) . ' Kg<br>
 					Surface = ' . pow(10, $info["energie"]) . ' J<br>
 					Température moyennne de surface = ' . $info["tempEt"] . ' °C<br>
-					Distance par rapport à la Terre = ' . pow(2, $info["distEt"]) . ' UA' . $propText;
+					Distance par rapport à la Terre = ' . $info["distEt"] . ' UA' . $propText;
 				}
 				?>
 			</p>
@@ -222,9 +228,10 @@ unset($bd);
 							</button>';
 						}
 					}
-				}elseif($_POST["type"] == "etoile") {
+				} elseif ($_POST["type"] == "etoile") {
 					// ACHETER
 					echo '<button class="acheter prct">
+							<input type="text" name="prct" id="prct" value="0" max="100" min="0">
 							<div class="bouton-main">
 								<h4>ACHETER</h4>
 							</div>
@@ -232,6 +239,7 @@ unset($bd);
 
 					// VENDRE
 					echo '<button class="vendre prct">
+							<input type="text" name="prct" id="prct" value="0" max="100" min="0">
 							<div class="bouton-main">
 								<h4>VENDRE</h4>
 							</div>
@@ -242,7 +250,6 @@ unset($bd);
 			}
 
 			?>
-
 			<!-- <button class="vendre prct">
 				<div class="bouton-main">
 					<h4>VENDRE</h4>

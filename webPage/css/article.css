@@ -5,14 +5,14 @@ body {
 
 
 main {
-	grid-area: 2 / span 5 / 2 / 13;
-	grid-template: 1fr 1fr / repeat(5, 75px);
+	grid-area: 2 / span 6 / 2 / 13;
+	grid-template: 1fr 1fr / repeat(6, 75px);
 	column-gap: 15px;
 	text-align: end;
 }
 
 #content {
-	grid-area: 1 / 1 / 1 / span 5;
+	grid-area: 1 / 1 / 1 / span 6;
 }
 
 .attribut {
@@ -47,7 +47,7 @@ h2:not(.noir) {
 }
 
 .boutons {
-	grid-area: 2 / 1 / 2 / span 5;
+	grid-area: 2 / 1 / 2 / span 6;
 	gap: 15px;
 	display: flex;
 	justify-content: end;
@@ -57,8 +57,13 @@ button:focus {
 	border: white 3px solid;
 }
 
-button:hover h4 {
-	opacity: 0.5; /* C #C6C6C6 mais avec l'opacité à 0.5 */
+button.prct .bouton-main:focus {
+	border: red 3px solid;
+}
+
+button .bouton-main:hover h4 {
+	opacity: 0.5;
+	/* C #C6C6C6 mais avec l'opacité à 0.5 */
 }
 
 .acheter {
@@ -111,23 +116,49 @@ button:hover h4 {
 }
 
 .prct {
-  width: 225px !important;
-  display: flex;
-  justify-content: end;
+	width: 255px !important;
+	display: flex;
+	justify-content: end;
+	background-color: rgba(198, 198, 198, 0.2);
 }
+
+.prct.acheter:focus .bouton-main, .prct.acheter:focus {
+	border: 5px #C6C6C6 solid;
+}
+
+.prct.vendre:focus .bouton-main, .prct.vendre:focus {
+	border: 5px #0F101D solid;
+}
+
+.prct:focus .bouton-main {
+	top: -5px;
+}
+  
 
 .acheter.prct {
-  background-color: #C6C6C6;
-  border: 5px black solid;
-}
-
-.prct .bouton-main {
-  position: relative;
-  top: -5px;
-  right: -5px;
+	border: 5px #0F101D solid;
 }
 
 .vendre.prct {
-  background-color: #C6C6C6;
-  border: 5px #C6C6C6 solid;
+	border: 5px #C6C6C6 solid;
+}
+
+input#prct {
+	font-size: 1rem;
+	font-weight: 600;
+	background: none;
+	color: #C6C6C6;
+	text-align: center;
+
+	width: 82px;
+	padding: 0;
+	margin-right: -3px;
+	border: none;
+}
+
+.prct .bouton-main {
+	position: relative;
+	top: -5px;
+	right: -5px;
+	box-sizing: border-box;
 }

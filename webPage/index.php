@@ -66,7 +66,7 @@
     <main>
         <h1>A propos de nous</h1>
         <div>
-            <p>Bienvenue sur le Galaxy Store, dans notre boutique vous pourrez y trouver des planètes ou des étoiles. En ce qui concerne les étoiles, vous pourrez acheter des parts dans le but d'utiliser la part correspondante d'énergie. Nous tenons à vous rappeler, que tous les visuels présents sur notre site ont été conçus par notre équipe :) .Nous esperons donc, qu'ils vous conviendront. Merci </p>
+            <p>Bienvenue sur le Galaxy Store, dans notre boutique vous pourrez y trouver des planètes ou des étoiles. En ce qui concerne les étoiles, vous pourrez acheter des parts dans le but d'utiliser la part correspondante d'énergie. Nous tenons à vous rappeler, que tous les visuels présentées sur notre site ont été conçus par notre équipe :) .Nous esperons donc, qu'ils vous conviendront. Merci </p>
         </div>
     </main>
 

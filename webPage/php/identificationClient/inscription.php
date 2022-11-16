@@ -102,7 +102,7 @@ unset($bd);
                         if ($compteDispo) {
                             //inscription
                             if ($nb >= 1) {
-                                echo "Inscription réussi";
+                                echo "Inscription réussie";
                             } elseif ($nb == 0) {
                                 echo "Echec de l'inscription";
                             }
@@ -116,7 +116,7 @@ unset($bd);
                 <div id="interactif">
 
                     <div <?php
-                            if ($nb > 0) { /* Si inscription réussi */
+                            if ($nb > 0) { /* Si inscription réussie */
                                 echo 'style="display: none;"';
                             }
                             ?>>
