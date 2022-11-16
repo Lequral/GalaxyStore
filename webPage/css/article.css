@@ -42,6 +42,10 @@ h2:not(.noir) {
 	text-transform: capitalize !important;
 }
 
+#etoile .noir {
+	width: 255px !important;
+}
+
 .boutons {
 	grid-area: 2 / 1 / 2 / span 5;
 	gap: 15px;
@@ -50,12 +54,11 @@ h2:not(.noir) {
 }
 
 button:focus {
-	border: #C6C6C6 2px solid;
+	border: white 3px solid;
 }
 
 button:hover h4 {
-	/* border: #C6C6C6 2px solid; */
-	opacity: 50%;
+	opacity: 0.5; /* C #C6C6C6 mais avec l'opacité à 0.5 */
 }
 
 .acheter {
@@ -79,8 +82,8 @@ button:hover h4 {
 }
 
 .bouton-main {
-	width: 100%;
-	height: 100%;
+	width: 165px;
+	height: 50px;
 	border-radius: 8px;
 	display: flex;
 	justify-content: center;
@@ -99,4 +102,32 @@ button:hover h4 {
 
 .vendre h4 {
 	color: #0F101D;
+}
+
+.btnDesactive {
+	pointer-events: none;
+	cursor: pointer;
+	opacity: 50%;
+}
+
+.prct {
+  width: 225px !important;
+  display: flex;
+  justify-content: end;
+}
+
+.acheter.prct {
+  background-color: #C6C6C6;
+  border: 5px black solid;
+}
+
+.prct .bouton-main {
+  position: relative;
+  top: -5px;
+  right: -5px;
+}
+
+.vendre.prct {
+  background-color: #C6C6C6;
+  border: 5px #C6C6C6 solid;
 }

@@ -144,3 +144,8 @@ button.likeA>h5 {
 button.likeA:focus {
     outline: none;
 }
+
+#pearlIt {
+    display: none;
+    background: none;
+}

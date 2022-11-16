@@ -7,14 +7,10 @@ main {
 	/* 1fr = 1 divisé par le nombre total de 1fr; ici 1fr = 1/3 de l'espace disponible*/
 }
 
-/* J'ai enlevé ce qui était en double parce que la majorité est déjà écrit dans police.css qui est importé sur tt les pages*/
 h4 {
 	text-align: center;
 }
 
-
-
-/* ici tu pourrais directement utilisé h1 pk ce fichier css est utilisé que pour cette page*/
 #boutique {
 	grid-column-start: 1;
 	grid-column-end: 13;
@@ -82,7 +78,7 @@ h4 {
 	background-position-y: -22px !important; /* !important c pour que ce soit prioritaire par rapport à de possible conflit ds d'autres fichiers*/
 	background-position-x: center !important;
 	background-size: cover !important;
-	background-repeat: no-repeat;
+	background-repeat: no-repeat !important;
 }
   
 .scroll {

@@ -15,7 +15,6 @@ $resultatsE = $bd->query($sqlE);
 $resultatsPartager = $bd->query($sqlPartager);
 
 $planetes = $resultats->fetchAll(PDO::FETCH_OBJ);
-/*print_r($planete);*/
 
 $etoiles = $resultatsE->fetchAll(PDO::FETCH_OBJ);
 
@@ -119,10 +118,10 @@ unset($bd); /* déconnexion de la BD */
 
                     if (isset($p->idCl)) {
                         $etat = "Vendu";
-                        $tag = " noir";
+                        // $tag = "noir";
                     } else {
                         $etat = "Disponible";
-                        $tag = "";
+                        // $tag = "noir";
                     }
 
                     if (isset($_POST) && isset($_POST["mail"]) && isset($_POST["mdp"])) {
@@ -135,12 +134,12 @@ unset($bd); /* déconnexion de la BD */
                     echo '
                     <div class="case">
                         <form action="./article.php" class="noStyle" method="POST">
-                            <input style="display:none;" type="number" name="id" id="id" value="' . $idPl . '">
+                            <input style="display:none;" type="number" name="idAstre" id="idAstre" value="' . $idPl . '">
                             <input style="display:none;" type="text" name="type" id="type" value="planete">
                             '.$inputConnexion.'
                             <button class="likeA" style="background-image: url(./../../statique/image/P' . $idPl . '.png);"">
                                 <h4>' . $nomPl . '</h4>
-                                <h6 class="tag' . $tag . '">' . $etat . '</h6>
+                                <h6 class="tag noir">' . $etat . '</h6>
                             </button> 
                         </form>
                     </div>';
@@ -163,7 +162,12 @@ unset($bd); /* déconnexion de la BD */
                     $idEt = $e->idEt;
                     $nomEt = $e->nomEt;
 
-                    $prct = get_object_vars($pourcentDispo[$key])["prctDispo"];
+                    $prct = intval(get_object_vars($pourcentDispo[$key])["prctDispo"]);
+                    // if(!$prct === 0) {
+                    //     $tag = "noir";
+                    // }else {
+                    //     $tag = "noir";
+                    // }
 
                     if (isset($_POST) && isset($_POST["mail"]) && isset($_POST["mdp"])) {
                         $inputConnexion = '<input class="hidden" type="text" name="mail" id="mail" value="' . $_POST["mail"] . '">
@@ -175,12 +179,12 @@ unset($bd); /* déconnexion de la BD */
                     echo '
                     <div class="case">
                         <form action="./article.php" class="noStyle" method="POST">
-                            <input style="display:none;" type="number" name="id" id="id" value="' . $idEt . '">
+                            <input style="display:none;" type="number" name="idAstre" id="idAstre" value="' . $idEt . '">
                             <input style="display:none;" type="text" name="type" id="type" value="etoile">
                             '.$inputConnexion.'
                             <button  class="likeA" style="background-image: url(./../../statique/image/!.png);">
                                 <h4>' . $nomEt . '</h4>
-                                <h6 class="tag">' . $prct . '% Dispo.</h6>
+                                <h6 class="tag noir">' . $prct . '% Dispo.</h6>
                             </button> 
                         </form>
                     </div>';
